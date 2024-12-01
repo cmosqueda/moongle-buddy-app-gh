@@ -1,5 +1,8 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 import React from "react";
+import { ProfileHeader } from "@/profile-components/profileHeader";
+import { PlanStatus } from "@/profile-components/planStatus";
+import { profileStyles } from "@/styles/mainScreenStyles";
 
 export default function Profile() {
   return (
@@ -8,24 +11,23 @@ export default function Profile() {
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* parent view */}
         <View style={profileStyles.parentView}>
-          {/* background */}
+          {/* green bg */}
           <View style={profileStyles.profileHeaderBg}></View>
+
+          {/* profile account header */}
+          <ProfileHeader></ProfileHeader>
+
+          {/* content place */}
+          <View style={profileStyles.contentPlace}>
+            {/* plan status */}
+            <PlanStatus></PlanStatus>
+
+            {/* show badges / achievements */}
+
+            {/* retention tracker */}
+          </View>
         </View>
       </ScrollView>
     </>
   );
 }
-
-// diri ko nag stop
-const profileStyles = StyleSheet.create({
-  parentView: {
-    alignItems: "center",
-  },
-  profileHeaderBg: {
-    height: 140,
-    backgroundColor: "#4ecdc4",
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    width: "100%",
-  },
-});

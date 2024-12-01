@@ -1,7 +1,8 @@
 import { Stack, Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Route } from "expo-router/build/Route";
-import { HeaderButtons } from "@/allPurpose-components/headerButtons";
+import { SearchButton } from "@/allPurpose-components/searchButton";
+import { EditButton } from "@/profile-components/editButton";
 // import { HubHeaderButtons } from "@/hub-components/hubHeaderButtons";
 
 export default function MainLayout() {
@@ -13,11 +14,13 @@ export default function MainLayout() {
           tabBarIcon: ({ focused }) => {
             let iconName;
             if (route.name === "index") iconName = "home";
-            else if (route.name === "hub") iconName = "folder-open";
+            else if (route.name === "hub") iconName = "folder";
             else if (route.name === "options") iconName = "settings";
             else if (route.name === "profile") iconName = "person";
 
             return <Ionicons name={iconName} size={24} color={focused ? "#FFE66D" : "#FFF"} />;
+
+            // return <MaterialIcons name={iconName} size={24} color={focused ? "#FFE66D" : "#FFF"}></MaterialIcons>;
           },
           tabBarPosition: "bottom",
           tabBarInactiveTintColor: "#FFF",
@@ -53,7 +56,7 @@ export default function MainLayout() {
           name="index"
           options={{
             headerTitle: "Home",
-            headerRight: () => <HeaderButtons></HeaderButtons>,
+            headerRight: () => <SearchButton></SearchButton>,
           }}
         ></Tabs.Screen>
 
@@ -62,7 +65,7 @@ export default function MainLayout() {
           name="hub"
           options={{
             headerTitle: "Study Hub",
-            headerRight: () => <HeaderButtons></HeaderButtons>,
+            headerRight: () => <SearchButton></SearchButton>,
           }}
         ></Tabs.Screen>
 
@@ -70,7 +73,10 @@ export default function MainLayout() {
         <Tabs.Screen name="options" options={{ headerTitle: "Options" }}></Tabs.Screen>
 
         {/* profile route */}
-        <Tabs.Screen name="profile" options={{ headerTitle: "Profile" }}></Tabs.Screen>
+        <Tabs.Screen
+          name="profile"
+          options={{ headerTitle: "Profile", headerRight: () => <EditButton></EditButton> }}
+        ></Tabs.Screen>
       </Tabs>
     </>
   );

@@ -8,7 +8,7 @@ import { Component } from "react";
 import { useRouter } from "expo-router";
 
 // for search button
-export const HeaderButtons = () => {
+export const SearchButton = () => {
   // const router = useRouter();
 
   return (

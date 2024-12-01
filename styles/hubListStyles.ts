@@ -16,7 +16,7 @@ const hubListStyles = StyleSheet.create({
     fontSize: 24,
     fontFamily: "helvetica",
     color: "#3D3D3D",
-    fontWeight: "bold",
+    fontWeight: "900",
   },
   plusButton: {
     width: 50,

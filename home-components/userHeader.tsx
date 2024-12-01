@@ -12,19 +12,20 @@ export const UserHeader = () => {
     <>
       {/* parent container */}
       <View style={styles.parentView}>
+        {/* text views */}
+        <View style={styles.textsView}>
+          {/* heading - name with greeting*/}
+          <Text style={styles.heading}>Hi, {DATA.username}!</Text>
+
+          {/* subheading - catch phrase */}
+          <Text style={styles.catchPhrase}>Let's review while having fun!</Text>
+        </View>
+
         {/* icon view */}
         <View style={styles.iconView}>
           <View style={styles.icon}></View>
 
           <Text style={styles.levelLabel}>Level {DATA.level}</Text>
-        </View>
-        {/* text views */}
-        <View style={styles.textsView}>
-          {/* heading - name with greeting*/}
-          <Text style={styles.heading}>Hi, {DATA.username}</Text>
-
-          {/* subheading - catch phrase */}
-          <Text style={styles.catchPhrase}>Let's review while having fun!</Text>
         </View>
       </View>
     </>
@@ -34,7 +35,8 @@ export const UserHeader = () => {
 const styles = StyleSheet.create({
   parentView: {
     width: "85%",
-    margin: 20,
+    height: "20%",
+    margin: 10,
     padding: 20,
     position: "absolute",
     backgroundColor: "#fff",
@@ -43,19 +45,21 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.3,
     shadowRadius: 10, // This controls the blur
-    flexDirection: "column",
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+    elevation: 5,
   },
   textsView: {
-    alignItems: "center",
-    marginVertical: 5,
+    // alignItems: "center",
+    // marginVertical: 3,
   },
   heading: {
     fontFamily: "helvetica",
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: "900",
     color: "#3d3d3d",
-    marginVertical: 5,
+    marginVertical: 10,
   },
   catchPhrase: {
     fontFamily: "helvetica",
@@ -67,9 +71,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
-    backgroundColor: "#4ecdc4",
-    height: 80,
-    width: 80,
+    backgroundColor: "#aaa",
+    height: 60,
+    width: 60,
     marginVertical: 5,
     borderRadius: 50,
   },

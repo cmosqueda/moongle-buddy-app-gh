@@ -7,13 +7,11 @@ export { default as Profile } from "./profile";
 // --------------------
 // main entrypoint + home
 
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import React from "react";
-import { HubRecents } from "@/home-components/hubRecents";
 import { FileRecents } from "@/home-components/fileRecents";
-import { QuizRecents } from "@/home-components/quizRecents";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import { UserHeader } from "@/home-components/userHeader";
+import { homeStyles } from "@/styles/mainScreenStyles";
 
 export default function Home() {
   return (
@@ -42,19 +40,6 @@ export default function Home() {
   );
 }
 
-const homeStyles = StyleSheet.create({
-  parentView: {
-    // alignItems: "center",
-    alignItems: "center",
-  },
-  userHeaderBg: {
-    height: 140,
-    backgroundColor: "#4ECDC4",
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    // padding: 100,
-    width: "100%",
-  },
-});
-
 // --------------------
+
+// styles can be found at styles >> mainScreenStyles.ts

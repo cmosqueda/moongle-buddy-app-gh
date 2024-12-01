@@ -6,11 +6,11 @@ const recentStyles = StyleSheet.create({
     marginVertical: 10,
     paddingHorizontal: 20,
     width: "100%",
-    marginTop: 120,
+    marginTop: 80,
   },
   header: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: "900",
     marginVertical: 5,
     fontFamily: "helvetica",
     color: "#3D3D3D",
