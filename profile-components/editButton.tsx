@@ -1,5 +1,6 @@
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 // ------------------------
 // EDIT BUTTON
@@ -7,7 +8,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 export const EditButton = () => {
   return (
     <>
-      <TouchableOpacity style={editButtonStyles.button}>
+      <TouchableOpacity style={editButtonStyles.button} onPress={() => router.push("/(editProfile)/")}>
         <MaterialCommunityIcons name="account-edit" size={24} color={"#fff"}></MaterialCommunityIcons>
       </TouchableOpacity>
     </>

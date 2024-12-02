@@ -6,13 +6,15 @@ export default function Options() {
   return (
     <>
       {/* scroll style */}
-      <View>
+      <ScrollView>
         {/* parent view */}
         <View>
           {/* under construction lmao */}
           <UnderConstruction></UnderConstruction>
+
+          {/* mga buttons */}
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 }

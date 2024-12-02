@@ -1,13 +1,19 @@
-import { Stack, Tabs } from "expo-router";
+import { Tabs } from "expo-router";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Route } from "expo-router/build/Route";
 import { SearchButton } from "@/allPurpose-components/searchButton";
 import { EditButton } from "@/profile-components/editButton";
+import { StatusBar } from "expo-status-bar";
+import { Image } from "react-native";
+// import SvgComponent from "@/assets/logo";
+
 // import { HubHeaderButtons } from "@/hub-components/hubHeaderButtons";
 
 export default function MainLayout() {
   return (
     <>
+      <StatusBar style="auto" backgroundColor="#4ecdc4"></StatusBar>
+
       <Tabs
         screenOptions={({ route }) => ({
           // tab bar
@@ -44,18 +50,28 @@ export default function MainLayout() {
           headerTitleStyle: {
             fontSize: 20,
             fontFamily: "helvetica",
-            fontWeight: "bold",
+            fontWeight: "900",
             color: "#fff",
           },
           // headerTintColor: "#FFFFFF",
           headerShadowVisible: false,
+          headerLeft: () => (
+            <Image
+              source={require("@/assets/official-logo.png")}
+              style={{
+                width: 60,
+                height: 60,
+                marginHorizontal: 10,
+              }}
+            ></Image>
+          ),
         })}
       >
         {/* index route */}
         <Tabs.Screen
           name="index"
           options={{
-            headerTitle: "Home",
+            headerTitle: "",
             headerRight: () => <SearchButton></SearchButton>,
           }}
         ></Tabs.Screen>
@@ -64,18 +80,18 @@ export default function MainLayout() {
         <Tabs.Screen
           name="hub"
           options={{
-            headerTitle: "Study Hub",
+            headerTitle: "",
             headerRight: () => <SearchButton></SearchButton>,
           }}
         ></Tabs.Screen>
 
         {/* options route */}
-        <Tabs.Screen name="options" options={{ headerTitle: "Options" }}></Tabs.Screen>
+        <Tabs.Screen name="options" options={{ headerTitle: "" }}></Tabs.Screen>
 
         {/* profile route */}
         <Tabs.Screen
           name="profile"
-          options={{ headerTitle: "Profile", headerRight: () => <EditButton></EditButton> }}
+          options={{ headerTitle: "", headerRight: () => <EditButton></EditButton> }}
         ></Tabs.Screen>
       </Tabs>
     </>

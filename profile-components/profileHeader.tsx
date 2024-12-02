@@ -6,6 +6,7 @@ type User = {
   level: number;
 };
 
+// placeholder
 const DATA: User = { username: "jalanie", level: 3 };
 
 export const ProfileHeader = () => {
