@@ -1,17 +1,10 @@
 import { router, Stack } from "expo-router";
-import { TouchableOpacity, StyleSheet, View, TextInput } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
+import { BackButton } from "@/allPurpose-components/headerBackButton";
 
 export default function SearchLayout() {
-  const BackButton = () => {
-    return (
-      <TouchableOpacity style={styles.backButtonContainer} onPress={() => router.back()}>
-        <Ionicons name="arrow-back" size={24} color={"#fff"}></Ionicons>
-      </TouchableOpacity>
-    );
-  };
-
   return (
     <>
       <Stack
@@ -30,6 +23,7 @@ export default function SearchLayout() {
               headerIconColor: "#fff",
               hintTextColor: "#fff",
               textColor: "#fff",
+              tintColor: "#fff",
             },
             headerLeft: () => <BackButton></BackButton>,
             headerTitleAlign: "center",
@@ -46,9 +40,3 @@ export default function SearchLayout() {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  backButtonContainer: {
-    marginHorizontal: 5,
-  },
-});

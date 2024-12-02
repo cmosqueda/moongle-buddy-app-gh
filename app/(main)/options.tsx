@@ -1,6 +1,7 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { UnderConstruction } from "@/allPurpose-components/underConstruction";
+import { LogoutButton } from "@/options-components/logoutButton";
 
 export default function Options() {
   return (
@@ -10,9 +11,10 @@ export default function Options() {
         {/* parent view */}
         <View>
           {/* under construction lmao */}
-          <UnderConstruction></UnderConstruction>
+          {/* <UnderConstruction></UnderConstruction> */}
 
           {/* mga buttons */}
+          <LogoutButton></LogoutButton>
         </View>
       </ScrollView>
     </>

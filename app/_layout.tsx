@@ -9,6 +9,7 @@ export default function RootLayout() {
       <Stack.Screen name="(main)"></Stack.Screen>
       <Stack.Screen name="(search)"></Stack.Screen>
       <Stack.Screen name="(editProfile)"></Stack.Screen>
+      <Stack.Screen name="(hub)"></Stack.Screen>
       <Stack.Screen name="+not-found"></Stack.Screen>
       {/* <StatusBar style="auto" backgroundColor="#4ecdc4"></StatusBar> */}
     </Stack>

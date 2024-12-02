@@ -1,11 +1,11 @@
 import { Tabs } from "expo-router";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { Route } from "expo-router/build/Route";
-import { SearchButton } from "@/allPurpose-components/searchButton";
 import { EditButton } from "@/profile-components/editButton";
 import { StatusBar } from "expo-status-bar";
 import { Image } from "react-native";
 // import SvgComponent from "@/assets/logo";
+import { SearchButton } from "@/allPurpose-components/headerSearchButton";
 
 // import { HubHeaderButtons } from "@/hub-components/hubHeaderButtons";
 
@@ -20,7 +20,7 @@ export default function MainLayout() {
           tabBarIcon: ({ focused }) => {
             let iconName;
             if (route.name === "index") iconName = "home";
-            else if (route.name === "hub") iconName = "folder";
+            else if (route.name === "hub") iconName = "file-tray";
             else if (route.name === "options") iconName = "settings";
             else if (route.name === "profile") iconName = "person";
 
@@ -43,15 +43,13 @@ export default function MainLayout() {
           // header bar
           headerStyle: {
             backgroundColor: "#4ECDC4",
-
-            // borderBottomLeftRadius: 20,
-            // borderBottomRightRadius: 20,
           },
           headerTitleStyle: {
             fontSize: 20,
             fontFamily: "helvetica",
             fontWeight: "900",
             color: "#fff",
+            justifyContent: "center",
           },
           // headerTintColor: "#FFFFFF",
           headerShadowVisible: false,
@@ -65,13 +63,16 @@ export default function MainLayout() {
               }}
             ></Image>
           ),
+
+          // headerTitle
+          title: "",
+          animation: "shift",
         })}
       >
         {/* index route */}
         <Tabs.Screen
           name="index"
           options={{
-            headerTitle: "",
             headerRight: () => <SearchButton></SearchButton>,
           }}
         ></Tabs.Screen>
@@ -80,19 +81,15 @@ export default function MainLayout() {
         <Tabs.Screen
           name="hub"
           options={{
-            headerTitle: "",
             headerRight: () => <SearchButton></SearchButton>,
           }}
         ></Tabs.Screen>
 
         {/* options route */}
-        <Tabs.Screen name="options" options={{ headerTitle: "" }}></Tabs.Screen>
+        <Tabs.Screen name="options" options={{}}></Tabs.Screen>
 
         {/* profile route */}
-        <Tabs.Screen
-          name="profile"
-          options={{ headerTitle: "", headerRight: () => <EditButton></EditButton> }}
-        ></Tabs.Screen>
+        <Tabs.Screen name="profile" options={{ headerRight: () => <EditButton></EditButton> }}></Tabs.Screen>
       </Tabs>
     </>
   );

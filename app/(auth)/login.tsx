@@ -1,6 +1,7 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView } from "react-native";
-import { Link } from "expo-router";
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image } from "react-native";
+import { Link, router } from "expo-router";
 import authStyles from "@/styles/authStyles";
+import { linkTo } from "expo-router/build/global-state/routing";
 
 export default function Login() {
   return (
@@ -10,7 +11,9 @@ export default function Login() {
         {/* parent view */}
         <View style={authStyles.parentView}>
           {/* logo image */}
-          <View></View>
+          <View style={authStyles.logoView}>
+            <Image style={authStyles.logo} source={require("@/assets/official-logo.png")}></Image>
+          </View>
 
           {/* screen Label */}
           <View style={authStyles.screenLabel}>
@@ -33,7 +36,8 @@ export default function Login() {
             <TextInput style={authStyles.textInput} placeholder="Password" placeholderTextColor={"gray"}></TextInput>
 
             {/* continue button */}
-            <TouchableOpacity style={authStyles.continueButton}>
+            {/* nag simulate pako diri mao router push pa nakabutang */}
+            <TouchableOpacity style={authStyles.continueButton} onPress={() => router.push("/(main)")}>
               <Text style={authStyles.continueLabel}>Continue</Text>
             </TouchableOpacity>
           </View>

@@ -10,7 +10,14 @@ const authStyles = StyleSheet.create({
     marginVertical: 70,
     marginHorizontal: 40,
   },
-  logo: {},
+  logoView: {
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  logo: {
+    width: 100,
+    height: 100,
+  },
   screenLabel: {
     alignItems: "center",
     justifyContent: "center",
@@ -33,8 +40,8 @@ const authStyles = StyleSheet.create({
     marginVertical: 20,
   },
   textInput: {
-    height: 35,
-    fontSize: 15,
+    height: 50,
+    fontSize: 16,
     borderWidth: 1,
     padding: 5,
     marginVertical: 5,
@@ -43,13 +50,14 @@ const authStyles = StyleSheet.create({
     fontFamily: "helvetica",
 
     // shadow
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    // shadowColor: "#000",
+    // shadowOffset: { width: 0, height: 2 },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    // elevation: 10,
   },
   continueButton: {
-    height: 35,
+    height: 50,
     // borderWidth: 1,
     marginVertical: 5,
     borderRadius: 3,
@@ -59,14 +67,16 @@ const authStyles = StyleSheet.create({
     backgroundColor: "#4ECDC4",
 
     // shadow
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    // shadowColor: "#000",
+    // shadowOffset: { width: 0, height: 2 },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    // elevation: 10,
   },
   continueLabel: {
     fontFamily: "helvetica",
     color: "white",
+    fontSize: 16,
   },
   switchScreenView: {
     alignSelf: "center",

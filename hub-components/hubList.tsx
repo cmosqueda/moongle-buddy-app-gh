@@ -2,6 +2,7 @@ import React from "react";
 import { FlatList, View, Text, TouchableOpacity, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import hubListStyles from "@/styles/hubListStyles";
+import { router } from "expo-router";
 
 // define type for the data items
 type DataItem = {
@@ -35,7 +36,8 @@ export const HubList = () => {
   // fetch data
 
   const renderItem = ({ item }: { item: DataItem }) => (
-    <TouchableOpacity onPress={() => handlePress(item)} style={hubListStyles.item}>
+    // mag route sa ko diri for simulation
+    <TouchableOpacity onPress={() => router.push("/(hub)/")} style={hubListStyles.item}>
       <Text style={hubListStyles.itemTitle}>{item.title}</Text>
       <Text style={hubListStyles.ownedByLabel}>Owned by {item.owner}</Text>
     </TouchableOpacity>

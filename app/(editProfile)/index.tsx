@@ -62,7 +62,7 @@ export default function EditProfile() {
           </View>
         </View>
 
-        {/* buttons for cancelling/saving */}
+        {/* buttons for saving */}
         <View style={styles.bottomButtonsWrapper}>
           {/* save changes */}
           <TouchableOpacity style={styles.saveChangesButton} onPress={() => router.back()}>
