@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image 
 import { Link, router } from "expo-router";
 import authStyles from "@/styles/authStyles";
 import { linkTo } from "expo-router/build/global-state/routing";
+import React from "react";
 
 export default function Login() {
   return (

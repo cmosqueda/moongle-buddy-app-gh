@@ -4,6 +4,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import React from "react";
 
 // layout for hub screens
 export default function HubLayout() {
@@ -36,7 +37,7 @@ export default function HubLayout() {
           //   header
           headerTitle: () => (
             <Image
-              source={require("@/assets/official-logo.png")}
+              source={require("@/assets/logotype.png")}
               style={{
                 width: 60,
                 height: 60,
@@ -47,7 +48,7 @@ export default function HubLayout() {
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerLeft: () => (
-            <TouchableOpacity style={{ marginHorizontal: 20 }} onPress={() => router.back()}>
+            <TouchableOpacity style={{ marginHorizontal: 20 }} onPress={() => router.push("/(main)/hub")}>
               <Ionicons name="arrow-back" size={24} color={"#fff"}></Ionicons>
             </TouchableOpacity>
           ),

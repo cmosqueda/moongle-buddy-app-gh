@@ -1,5 +1,6 @@
 import { StyleSheet, TouchableOpacity, ScrollView, Text, TextInput, View } from "react-native";
 import { router } from "expo-router";
+import React from "react";
 
 // type for old user credentials
 type OldUserCredentials = {
@@ -122,11 +123,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     fontSize: 18,
     fontFamily: "helvetica",
-    padding: 8,
+    padding: 5,
     borderRadius: 5,
     color: "#3d3d3d",
     borderWidth: 1,
     borderColor: "#3d3d3d",
+    height: 50,
   },
 
   //   bottom buttons wrapper
@@ -138,13 +140,10 @@ const styles = StyleSheet.create({
   saveChangesButton: {
     // marginHorizontal: 20,
     backgroundColor: "#FFE66D",
-    padding: 10,
-    borderRadius: 5,
-    elevation: 10,
-    shadowColor: "#AAA",
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.3,
-    shadowRadius: 10, // This controls the blur
+    padding: 15,
+    borderRadius: 30,
+    // borderWidth: 1,
+    // borderColor: "#3d3d3d",
   },
   saveChangesLabel: {
     fontFamily: "helvetica",

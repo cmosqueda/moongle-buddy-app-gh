@@ -7,6 +7,7 @@ export { default as Signup } from "./signup";
 // auth entrypoint
 
 import { Redirect } from "expo-router";
+import React from "react";
 
 export default function AuthIndex() {
   return (

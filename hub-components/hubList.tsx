@@ -37,7 +37,7 @@ export const HubList = () => {
 
   const renderItem = ({ item }: { item: DataItem }) => (
     // mag route sa ko diri for simulation
-    <TouchableOpacity onPress={() => router.push("/(hub)/")} style={hubListStyles.item}>
+    <TouchableOpacity onPress={() => router.push("/(hub)")} style={hubListStyles.item}>
       <Text style={hubListStyles.itemTitle}>{item.title}</Text>
       <Text style={hubListStyles.ownedByLabel}>Owned by {item.owner}</Text>
     </TouchableOpacity>
@@ -59,7 +59,7 @@ export const HubList = () => {
 
               {/* plus button */}
               <TouchableOpacity style={hubListStyles.plusButton}>
-                <Ionicons name="add" size={24} color="white" />
+                <Ionicons name="add" size={24} color="#fff" />
               </TouchableOpacity>
             </View>
           )}

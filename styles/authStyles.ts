@@ -48,6 +48,7 @@ const authStyles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "white",
     fontFamily: "helvetica",
+    borderColor: "#aaa",
 
     // shadow
     // shadowColor: "#000",

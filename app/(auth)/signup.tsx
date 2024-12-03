@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image } from "react-native";
 import { Link, router } from "expo-router";
 import authStyles from "@/styles/authStyles";
+import React from "react";
 
 export default function Signup() {
   return (

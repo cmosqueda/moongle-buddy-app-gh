@@ -20,7 +20,7 @@ const hubListStyles = StyleSheet.create({
   },
   plusButton: {
     width: 50,
-    backgroundColor: "#4ECDC4",
+    backgroundColor: "#FF6B6B",
     alignItems: "center",
     borderRadius: 100,
   },

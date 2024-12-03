@@ -1,19 +1,33 @@
 import { Tabs } from "expo-router";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
-import { Route } from "expo-router/build/Route";
+// import { Route } from "expo-router/build/Route";
 import { EditButton } from "@/profile-components/editButton";
 import { StatusBar } from "expo-status-bar";
 import { Image } from "react-native";
-// import SvgComponent from "@/assets/logo";
 import { SearchButton } from "@/allPurpose-components/headerSearchButton";
+import React from "react";
 
-// import { HubHeaderButtons } from "@/hub-components/hubHeaderButtons";
+// import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+// import Hub from "./hub";
+// import Home from "./index";
+// import Options from "./options";
+// import Profile from "./profile";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { NavigationContainer } from "@react-navigation/native";
+
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+// import { enableScreens } from "react-native-screens";
+// import { NavigationContainer } from "@react-navigation/native";
+
+// const Tab = createMaterialTopTabNavigator();
+// const Tab = createBottomTabNavigator();
 
 export default function MainLayout() {
   return (
     <>
       <StatusBar style="auto" backgroundColor="#4ecdc4"></StatusBar>
 
+      {/* <NavigationContainer> */}
       <Tabs
         screenOptions={({ route }) => ({
           // tab bar
@@ -25,10 +39,7 @@ export default function MainLayout() {
             else if (route.name === "profile") iconName = "person";
 
             return <Ionicons name={iconName} size={24} color={focused ? "#FFE66D" : "#FFF"} />;
-
-            // return <MaterialIcons name={iconName} size={24} color={focused ? "#FFE66D" : "#FFF"}></MaterialIcons>;
           },
-          tabBarPosition: "bottom",
           tabBarInactiveTintColor: "#FFF",
           tabBarActiveTintColor: "#FFE66D",
           tabBarStyle: {
@@ -37,6 +48,8 @@ export default function MainLayout() {
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             paddingTop: 10,
+            // position: "absolute",
+            // bottom: 0,
           },
           tabBarShowLabel: false,
 
@@ -55,7 +68,7 @@ export default function MainLayout() {
           headerShadowVisible: false,
           headerLeft: () => (
             <Image
-              source={require("@/assets/official-logo.png")}
+              source={require("@/assets/logotype.png")}
               style={{
                 width: 60,
                 height: 60,
@@ -69,28 +82,29 @@ export default function MainLayout() {
           animation: "shift",
         })}
       >
-        {/* index route */}
         <Tabs.Screen
           name="index"
-          options={{
-            headerRight: () => <SearchButton></SearchButton>,
-          }}
+          // component={Home}
+          options={{ headerRight: () => <SearchButton></SearchButton> }}
         ></Tabs.Screen>
-
-        {/* hub route */}
         <Tabs.Screen
           name="hub"
+          // component={Hub}
+          options={{ headerRight: () => <SearchButton></SearchButton> }}
+        ></Tabs.Screen>
+        <Tabs.Screen
+          name="options"
+          // component={Options}
+        ></Tabs.Screen>
+        <Tabs.Screen
+          name="profile"
+          //  component={Profile}
           options={{
-            headerRight: () => <SearchButton></SearchButton>,
+            headerRight: () => <EditButton></EditButton>,
           }}
         ></Tabs.Screen>
-
-        {/* options route */}
-        <Tabs.Screen name="options" options={{}}></Tabs.Screen>
-
-        {/* profile route */}
-        <Tabs.Screen name="profile" options={{ headerRight: () => <EditButton></EditButton> }}></Tabs.Screen>
       </Tabs>
+      {/* </NavigationContainer> */}
     </>
   );
 }

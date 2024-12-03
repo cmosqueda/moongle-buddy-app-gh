@@ -1,3 +1,5 @@
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 
 // hub header
@@ -26,6 +28,7 @@ export const HubHeader = () => {
         </View>
 
         <TouchableOpacity style={styles.createButton}>
+          <Ionicons style={styles.createIcon} name="add-circle" size={30}></Ionicons>
           <Text style={styles.createButtonText}>Create</Text>
         </TouchableOpacity>
       </View>
@@ -44,7 +47,6 @@ const styles = StyleSheet.create({
 
     // shadow effect
     elevation: 10,
-
     shadowColor: "#AAA",
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.3,
@@ -69,15 +71,21 @@ const styles = StyleSheet.create({
   },
   createButton: {
     padding: 10,
-    // borderWidth: 1,
     margin: 15,
     alignItems: "center",
     borderRadius: 5,
     backgroundColor: "#FF6B6B",
+    justifyContent: "center",
+    flexDirection: "row",
   },
   createButtonText: {
     fontSize: 16,
     fontFamily: "helvetica",
+    color: "#fff",
+    marginHorizontal: 5,
+    fontWeight: "800",
+  },
+  createIcon: {
     color: "#fff",
   },
 });

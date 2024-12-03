@@ -1,5 +1,6 @@
 import { HubHeader } from "@/hub-components/hubHeader";
 import { QuizzesList } from "@/hub-components/quizzesList";
+import React from "react";
 import { ScrollView, View } from "react-native";
 
 export default function Quizzes() {

@@ -1,5 +1,6 @@
 import { FilesList } from "@/hub-components/filesList";
 import { HubHeader } from "@/hub-components/hubHeader";
+import React from "react";
 import { ScrollView, View, Text } from "react-native";
 
 // hub entry point index + files screen
