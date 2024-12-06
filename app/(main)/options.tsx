@@ -1,7 +1,14 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
-import { UnderConstruction } from "@/allPurpose-components/underConstruction";
-import { LogoutButton } from "@/options-components/logoutButton";
+// import { UnderConstruction } from "@/allPurpose-components/underConstruction";
+import { LogoutButton } from "../../options-components/logoutButton";
+// import { TriggerSplash } from "@/options-components/triggerSplash";
+// import { TriggerLoading } from "@/options-components/triggerLoadingButton";
+// import { useSplashScreen } from "@/hooks";
+// import { useLoadingScreen } from "@/hooks";
+// import { useLoadingScreen } from "hooks/useLoadingScreen";
+import { useLoadingScreen } from "../../hooks";
+import LoadingScreen from "../../transitional-screens/loadingScreen";
 
 export default function Options() {
   return (
@@ -15,6 +22,12 @@ export default function Options() {
 
           {/* mga buttons */}
           <LogoutButton></LogoutButton>
+
+          {/* dummy to trigger splash screen */}
+          {/* <TriggerSplash></TriggerSplash> */}
+
+          {/* dummy to ttrigger loading screen */}
+          {/* <TriggerLoading></TriggerLoading> */}
         </View>
       </ScrollView>
     </>

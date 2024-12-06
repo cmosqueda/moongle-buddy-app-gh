@@ -4,7 +4,8 @@
 
 import React from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import hubScreensStyles from "@/styles/hubScreensStyles";
+// import hubScreensStyles from "@/styles/hubScreensStyles";
+import hubScreensStyles from "../styles/hubScreensStyles";
 
 // type for quiz
 type DataItem = {

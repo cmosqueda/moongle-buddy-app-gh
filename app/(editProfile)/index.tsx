@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
   },
   displayedUsername: {
     fontSize: 24,
-    fontFamily: "helvetica",
-    fontWeight: "900",
+    fontFamily: "Poppins-Bold",
+    // fontWeight: "900",
     color: "#fff",
   },
   formField: {
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   label: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     marginVertical: 5,
     color: "#fff",
     fontSize: 14,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "#fff",
     fontSize: 18,
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     padding: 5,
     borderRadius: 5,
     color: "#3d3d3d",
@@ -146,9 +146,9 @@ const styles = StyleSheet.create({
     // borderColor: "#3d3d3d",
   },
   saveChangesLabel: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Bold",
     fontSize: 16,
-    fontWeight: "600",
+    // fontWeight: "600",
     color: "#3d3d3d",
   },
 });

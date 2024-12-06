@@ -1,14 +1,21 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { Icon } from "@expo/vector-icons/build/createIconSet";
 
-export const UnderConstruction = () => {
+interface EmptyDetails {
+  title: string;
+  message: string;
+  iconName: string;
+}
+
+export const EmptyListScreen: React.FC<EmptyDetails> = ({ title, iconName, message }) => {
   return (
     <>
       <View style={styles.container}>
-        <Ionicons name="construct-outline" size={90} style={styles.icon} color={"#ccc"}></Ionicons>
-        <Text style={styles.title}>Under Construction</Text>
-        <Text style={styles.subtitle}>Woops. Looks like this page is still under construction.</Text>
+        <Ionicons name={iconName} size={150} style={styles.icon} color={"#ddd"}></Ionicons>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.subtitle}>{message}</Text>
       </View>
     </>
   );
@@ -18,9 +25,10 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-    paddingVertical: 100,
+    // paddingVertical: 100,
     paddingHorizontal: 20,
-    height: "100%",
+    // height: "100%",
+    marginVertical: 50,
   },
   icon: {
     margin: 10,

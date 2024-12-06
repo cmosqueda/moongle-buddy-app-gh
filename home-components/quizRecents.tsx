@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList, View, Text, Pressable, Alert } from "react-native";
-import recentStyles from "@/styles/recentsStyles";
+import recentStyles from "../styles/recentsStyles";
 
 // Define the type for the data items
 type DataItem = {

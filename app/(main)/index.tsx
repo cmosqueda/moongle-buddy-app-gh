@@ -1,6 +1,7 @@
 // main exports
 
 // export { default as Home } from "./home";
+export { default as Hub } from "./hub";
 export { default as Options } from "./options";
 export { default as Profile } from "./profile";
 
@@ -9,9 +10,10 @@ export { default as Profile } from "./profile";
 
 import { View, ScrollView, StyleSheet } from "react-native";
 import React from "react";
-import { FileRecents } from "@/home-components/fileRecents";
-import { UserHeader } from "@/home-components/userHeader";
-import { homeStyles } from "@/styles/mainScreenStyles";
+import { FileRecents } from "../../home-components/fileRecents";
+import { UserHeader } from "../../home-components/userHeader";
+// import { homeStyles } from "styles/mainScreenStyles";
+import { homeStyles } from "../../styles/mainScreenStyles";
 
 export default function Home() {
   return (

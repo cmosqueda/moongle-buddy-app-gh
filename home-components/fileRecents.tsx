@@ -1,6 +1,7 @@
 import React from "react";
 import { FlatList, View, Text, Pressable, Alert } from "react-native";
-import recentStyles from "@/styles/recentsStyles";
+import recentStyles from "../styles/recentsStyles";
+import { EmptyListScreen } from "../allPurpose-components/emptyListScreen";
 
 // Define the type for the data items
 type DataItem = {
@@ -16,8 +17,8 @@ const DATA: DataItem[] = [
   { id: "3", title: "File 3", owner: "user" },
   { id: "4", title: "File 3", owner: "user" },
   { id: "5", title: "File 3", owner: "user" },
-  { id: "6", title: "File 3", owner: "user" },
-  { id: "7", title: "File 3", owner: "user" },
+  // { id: "6", title: "File 3", owner: "user" },
+  // { id: "7", title: "File 3", owner: "user" },
 ];
 
 export const FileRecents = () => {
@@ -36,6 +37,19 @@ export const FileRecents = () => {
       <Text style={recentStyles.ownedByLabel}>Owned by {item.owner}</Text>
     </Pressable>
   );
+
+  if (DATA.length === 0) {
+    console.log("no recently accessed file");
+    return (
+      <EmptyListScreen
+        title="Empty"
+        message="Woops. Nothing's here yet."
+        iconName="folder-open-outline"
+      ></EmptyListScreen>
+    );
+  } else {
+    console.log("accessed file");
+  }
 
   return (
     <View style={recentStyles.container}>

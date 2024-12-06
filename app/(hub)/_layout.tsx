@@ -1,4 +1,5 @@
-import { BackButton } from "@/allPurpose-components/headerBackButton";
+// import { BackButton } from "@/allPurpose-components/headerBackButton";
+import { BackButton } from "../../allPurpose-components/headerBackButton";
 import { Tabs } from "expo-router";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Image, TouchableOpacity } from "react-native";
@@ -29,15 +30,15 @@ export default function HubLayout() {
           tabBarActiveTintColor: "#FFE66D",
           tabBarInactiveTintColor: "#fff",
           tabBarLabelStyle: {
-            fontFamily: "helvetica",
+            fontFamily: "Poppins-Bold",
             fontSize: 16,
-            fontWeight: "900",
+            // fontWeight: "900",
           },
 
           //   header
           headerTitle: () => (
             <Image
-              source={require("@/assets/logotype.png")}
+              source={require("../../assets/logotype.png")}
               style={{
                 width: 60,
                 height: 60,

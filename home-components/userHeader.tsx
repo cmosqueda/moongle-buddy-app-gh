@@ -1,3 +1,4 @@
+import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 
 type User = {
@@ -35,10 +36,10 @@ export const UserHeader = () => {
 const styles = StyleSheet.create({
   parentView: {
     width: "85%",
-    height: "20%",
+    // height: "20%",
     margin: 10,
     padding: 20,
-    position: "absolute",
+    // position: "absolute",
     backgroundColor: "#fff",
     borderRadius: 10,
     shadowColor: "#AAA",
@@ -55,16 +56,16 @@ const styles = StyleSheet.create({
     // marginVertical: 3,
   },
   heading: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Black",
     fontSize: 24,
-    fontWeight: "900",
+    // fontWeight: "900",
     color: "#3d3d3d",
-    marginVertical: 10,
+    marginVertical: 0,
   },
   catchPhrase: {
-    fontFamily: "helvetica",
-
+    fontFamily: "Poppins-Italic",
     textAlign: "center",
+    fontSize: 13,
   },
   iconView: {
     flexDirection: "column",
@@ -78,6 +79,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   levelLabel: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
   },
 });

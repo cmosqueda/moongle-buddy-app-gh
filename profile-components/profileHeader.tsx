@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { PlanStatus } from "./planStatus";
+import React from "react";
 
 type User = {
   username: string;
@@ -42,10 +43,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.3,
     shadowRadius: 10, // This controls the blur
-    padding: 20,
+    padding: 15,
     margin: 10,
 
-    position: "absolute",
+    // position: "absolute",
   },
   iconLevelWrap: {
     alignItems: "center",
@@ -59,13 +60,13 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   levelNo: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     color: "#3d3d3d",
     // fontWeight: "700",
   },
   userName: {
-    fontFamily: "helvetica",
-    fontWeight: "900",
+    fontFamily: "Poppins-Black",
+    // fontWeight: "900",
     fontSize: 24,
     color: "#3d3d3d",
     // margin: 10,

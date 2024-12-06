@@ -58,15 +58,15 @@ const styles = StyleSheet.create({
   },
   hubOwner: {
     fontSize: 14,
-    fontFamily: "helvetica",
-    fontStyle: "italic",
+    fontFamily: "Poppins-Italic",
+    // fontStyle: "italic",
     marginVertical: 5,
     color: "#3d3d3d",
   },
   hubName: {
     fontSize: 24,
-    fontFamily: "helvetica",
-    fontWeight: "900",
+    fontFamily: "Poppins-Bold",
+    // fontWeight: "900",
     color: "#3d3d3d",
   },
   createButton: {
@@ -80,10 +80,10 @@ const styles = StyleSheet.create({
   },
   createButtonText: {
     fontSize: 16,
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     color: "#fff",
     marginHorizontal: 5,
-    fontWeight: "800",
+    // fontWeight: "800",
   },
   createIcon: {
     color: "#fff",

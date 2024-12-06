@@ -22,7 +22,8 @@ export default function EditProfileLayout() {
             headerTitle: "Edit Profile",
             headerTitleStyle: {
               color: "#fff",
-              fontWeight: "900",
+              // fontWeight: "900",
+              fontFamily: "Poppins-Black",
             },
             headerTitleAlign: "center",
           }}

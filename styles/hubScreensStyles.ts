@@ -16,13 +16,13 @@ const hubScreensStyles = StyleSheet.create({
     borderColor: "#ddd",
   },
   itemTitle: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Bold",
     fontSize: 16,
     color: "#3d3d3d",
-    fontWeight: "bold",
+    // fontWeight: "bold",
   },
   ownedByLabel: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     color: "#3d3d3d",
   },
 });

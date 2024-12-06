@@ -24,15 +24,15 @@ const authStyles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: "800",
+    // fontWeight: "800",
     marginVertical: 10,
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Black",
     textAlign: "center",
     color: "#3D3D3D",
   },
   subTitle: {
     fontSize: 15,
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     textAlign: "center",
     color: "#3D3D3D",
   },
@@ -47,15 +47,8 @@ const authStyles = StyleSheet.create({
     marginVertical: 5,
     borderRadius: 5,
     backgroundColor: "white",
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     borderColor: "#aaa",
-
-    // shadow
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowOpacity: 0.25,
-    // shadowRadius: 3.84,
-    // elevation: 10,
   },
   continueButton: {
     height: 50,
@@ -75,7 +68,7 @@ const authStyles = StyleSheet.create({
     // elevation: 10,
   },
   continueLabel: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     color: "white",
     fontSize: 16,
   },
@@ -83,7 +76,7 @@ const authStyles = StyleSheet.create({
     alignSelf: "center",
   },
   switchScreenText: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     color: "#3D3D3D",
   },
   toSingupLink: {

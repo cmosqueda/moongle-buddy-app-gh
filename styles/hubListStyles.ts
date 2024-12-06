@@ -8,21 +8,22 @@ const hubListStyles = StyleSheet.create({
   },
   headerView: {
     flexDirection: "row",
-    marginVertical: 10,
+    margin: 20,
     alignItems: "center",
     justifyContent: "space-between",
   },
   headerTitle: {
     fontSize: 24,
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Black",
     color: "#3D3D3D",
-    fontWeight: "900",
+    // fontWeight: "900",
   },
   plusButton: {
-    width: 50,
+    width: 60,
     backgroundColor: "#FF6B6B",
     alignItems: "center",
     borderRadius: 100,
+    padding: 5,
   },
   item: {
     backgroundColor: "#f9f9f9",
@@ -34,12 +35,12 @@ const hubListStyles = StyleSheet.create({
   },
   itemTitle: {
     fontSize: 16,
-    fontWeight: "bold",
-    fontFamily: "helvetica",
+    // fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
     color: "#3d3d3d",
   },
   ownedByLabel: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     color: "#3D3D3D",
   },
 });

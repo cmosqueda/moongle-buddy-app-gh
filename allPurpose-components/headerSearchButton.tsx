@@ -1,6 +1,7 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
+import React from "react";
 
 // for search button
 export const SearchButton = () => {
@@ -9,7 +10,7 @@ export const SearchButton = () => {
   return (
     <>
       <View style={styles.container}>
-        <TouchableOpacity onPress={() => router.push("/(search)/")}>
+        <TouchableOpacity onPress={() => router.push("/(search)")}>
           <Ionicons name="search" size={24} color={"white"}></Ionicons>
         </TouchableOpacity>
       </View>

@@ -1,3 +1,4 @@
+import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
 type UserAccount = {
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
 
   statusLabel: {
     color: "#4ecdc4",
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     margin: 5,
   },
 });

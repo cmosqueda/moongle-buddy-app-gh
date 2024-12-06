@@ -2,7 +2,9 @@ import { router, Stack } from "expo-router";
 import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 // import { StatusBar } from "expo-status-bar";
-import { BackButton } from "@/allPurpose-components/headerBackButton";
+// import { BackButton } from "@/allPurpose-components/headerBackButton";
+import { BackButton } from "../../allPurpose-components/headerBackButton";
+import React from "react";
 
 export default function SearchLayout() {
   return (
@@ -29,8 +31,8 @@ export default function SearchLayout() {
             headerTitleAlign: "center",
             headerTitleStyle: {
               // fontSize: 18,
-              fontFamily: "helvetica",
-              fontWeight: "900",
+              fontFamily: "Poppins-Black",
+              // fontWeight: "900",
               color: "#fff",
               fontSize: 20,
             },

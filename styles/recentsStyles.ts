@@ -2,17 +2,16 @@ import { StyleSheet } from "react-native";
 
 const recentStyles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     marginVertical: 10,
     paddingHorizontal: 20,
     width: "100%",
-    marginTop: 80,
   },
   header: {
     fontSize: 24,
-    fontWeight: "900",
+    // fontWeight: "900",
     marginVertical: 5,
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Black",
     color: "#3D3D3D",
   },
   item: {
@@ -25,12 +24,12 @@ const recentStyles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold",
-    fontFamily: "helvetica",
+    // fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
     color: "#3D3D3D",
   },
   ownedByLabel: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     color: "#3D3D3D",
   },
 });

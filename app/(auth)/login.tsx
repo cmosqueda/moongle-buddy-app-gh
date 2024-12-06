@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image } from "react-native";
 import { Link, router } from "expo-router";
-import authStyles from "@/styles/authStyles";
+import authStyles from "../../styles/authStyles";
 import { linkTo } from "expo-router/build/global-state/routing";
 import React from "react";
 
@@ -13,13 +13,13 @@ export default function Login() {
         <View style={authStyles.parentView}>
           {/* logo image */}
           <View style={authStyles.logoView}>
-            <Image style={authStyles.logo} source={require("@/assets/official-logo.png")}></Image>
+            <Image style={authStyles.logo} source={require("../../assets/official-logo.png")}></Image>
           </View>
 
           {/* screen Label */}
           <View style={authStyles.screenLabel}>
             {/* title */}
-            <Text style={authStyles.title}>Welcome to Moongle Buddy!</Text>
+            <Text style={authStyles.title}>Welcome to MOONGLE Buddy!</Text>
 
             {/* subtitle */}
             <Text style={authStyles.subTitle}>Please login to your existing account.</Text>

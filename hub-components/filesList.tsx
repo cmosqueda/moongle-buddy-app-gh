@@ -2,7 +2,8 @@
 
 import React from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import hubScreensStyles from "@/styles/hubScreensStyles";
+// import hubScreensStyles from "@/styles/hubScreensStyles";
+import hubScreensStyles from "../styles/hubScreensStyles";
 
 // type for files
 type DataItem = {
