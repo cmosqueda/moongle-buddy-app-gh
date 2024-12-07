@@ -25,16 +25,20 @@ export default function Index() {
 
   useEffect(() => {
     if (!fontsLoaded) {
-      console.log("fonts have been loaded");
+      console.log("fonts are not loaded");
     }
   }, [fontsLoaded]);
 
   // loading screen
-  const isLoading = useLoadingScreen(3000);
+  const isLoading = useLoadingScreen();
 
   if (isLoading) {
     return <LoadingScreen></LoadingScreen>;
   }
+
+  // if (!fontsLoaded) {
+  //   return <LoadingScreen></LoadingScreen>;
+  // }
 
   return (
     <>

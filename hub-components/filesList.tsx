@@ -17,6 +17,8 @@ const DATA: DataItem[] = [
   { id: "2", title: "file2", owner: "Jane" },
   { id: "3", title: "file3", owner: "John" },
   { id: "4", title: "file4", owner: "Jane" },
+  { id: "5", title: "file4", owner: "Jane" },
+  { id: "6", title: "file4", owner: "Jane" },
 ];
 
 export const FilesList = () => {

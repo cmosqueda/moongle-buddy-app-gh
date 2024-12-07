@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, View, Text, Pressable, Alert } from "react-native";
+import { FlatList, View, Text, TouchableOpacity, Alert } from "react-native";
 import recentStyles from "../styles/recentsStyles";
 import { EmptyListScreen } from "../allPurpose-components/emptyListScreen";
 
@@ -16,7 +16,7 @@ const DATA: DataItem[] = [
   { id: "2", title: "File 2", owner: "user" },
   { id: "3", title: "File 3", owner: "user" },
   { id: "4", title: "File 3", owner: "user" },
-  { id: "5", title: "File 3", owner: "user" },
+  // { id: "5", title: "File 3", owner: "user" },
   // { id: "6", title: "File 3", owner: "user" },
   // { id: "7", title: "File 3", owner: "user" },
 ];
@@ -27,15 +27,17 @@ export const FileRecents = () => {
     Alert.alert("Clicked!", `You clicked on ${item.title}`);
   };
 
+  // long press action handler
+  const handleLongPress = () => {
+    Alert.alert("Long Pressed!", "You long pressed on the list");
+  };
+
   // Rendering item with type annotation
   const renderItem = ({ item }: { item: DataItem }) => (
-    <Pressable
-      onPress={() => handlePress(item)}
-      style={({ pressed }) => [recentStyles.item, pressed ? { backgroundColor: "#ddd" } : null]}
-    >
+    <TouchableOpacity onPress={() => handlePress(item)} style={recentStyles.item} onLongPress={() => handleLongPress()}>
       <Text style={recentStyles.title}>{item.title}</Text>
       <Text style={recentStyles.ownedByLabel}>Owned by {item.owner}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 
   if (DATA.length === 0) {

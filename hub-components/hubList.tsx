@@ -36,12 +36,20 @@ export const HubList = () => {
     Alert.alert("Clicked", `You clicked on ${item.title}`);
   };
 
+  const handleLongPress = () => {
+    Alert.alert("Long Press", "You long pressed on the list");
+  };
+
   // fetch data
 
   // item render
   const renderItem = ({ item }: { item: DataItem }) => (
     // mag route sa ko diri for simulation
-    <TouchableOpacity onPress={() => router.push("/(hub)")} style={hubListStyles.item}>
+    <TouchableOpacity
+      onPress={() => router.push("/(hub)")}
+      style={hubListStyles.item}
+      onLongPress={() => handleLongPress()}
+    >
       <Text style={hubListStyles.itemTitle}>{item.title}</Text>
       <Text style={hubListStyles.ownedByLabel}>Owned by {item.owner}</Text>
     </TouchableOpacity>

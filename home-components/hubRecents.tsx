@@ -1,3 +1,5 @@
+// di nani need
+
 import React from "react";
 import { FlatList, View, Text, Pressable, Alert } from "react-native";
 import recentStyles from "../styles/recentsStyles";
