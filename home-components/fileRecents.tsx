@@ -12,16 +12,21 @@ type DataItem = {
 
 // Define the data with proper types
 const DATA: DataItem[] = [
-  { id: "1", title: "File 1", owner: "user" },
-  { id: "2", title: "File 2", owner: "user" },
-  { id: "3", title: "File 3", owner: "user" },
-  { id: "4", title: "File 3", owner: "user" },
+  // { id: "1", title: "File 1", owner: "user" },
+  // { id: "2", title: "File 2", owner: "user" },
+  // { id: "3", title: "File 3", owner: "user" },
+  // { id: "4", title: "File 3", owner: "user" },
   // { id: "5", title: "File 3", owner: "user" },
   // { id: "6", title: "File 3", owner: "user" },
   // { id: "7", title: "File 3", owner: "user" },
 ];
 
 export const FileRecents = () => {
+  // this is for actual data --- uncomment it ---
+  // const DATA: DataItem[] = [
+
+  // ]
+
   // Action handler with type annotation
   const handlePress = (item: DataItem) => {
     Alert.alert("Clicked!", `You clicked on ${item.title}`);

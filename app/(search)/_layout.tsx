@@ -1,6 +1,6 @@
-import { router, Stack } from "expo-router";
-import { TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { Stack } from "expo-router";
+// import { TouchableOpacity } from "react-native";
+// import { Ionicons } from "@expo/vector-icons";
 // import { StatusBar } from "expo-status-bar";
 // import { BackButton } from "@/allPurpose-components/headerBackButton";
 import { BackButton } from "../../allPurpose-components/headerBackButton";

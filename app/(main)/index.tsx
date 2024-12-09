@@ -14,6 +14,7 @@ import { FileRecents } from "../../home-components/fileRecents";
 import { UserHeader } from "../../home-components/userHeader";
 // import { homeStyles } from "styles/mainScreenStyles";
 import { homeStyles } from "../../styles/mainScreenStyles";
+// import { user, AuthProvider } from "@/utilities/authProvider";
 
 export default function Home() {
   return (

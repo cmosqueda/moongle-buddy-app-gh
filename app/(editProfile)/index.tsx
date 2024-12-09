@@ -1,6 +1,8 @@
 import { StyleSheet, TouchableOpacity, ScrollView, Text, TextInput, View } from "react-native";
 import { router } from "expo-router";
 import React from "react";
+import { useAuth } from "@/utilities/authProvider";
+import { FontAwesome } from "@expo/vector-icons";
 
 // type for old user credentials
 type OldUserCredentials = {
@@ -20,12 +22,16 @@ type NewUserCredentials = {
   confirmPassword: string;
 };
 
-// placeholder for old data
-const OLDDATA: OldUserCredentials = { username: "jalanie" };
+// // placeholder for old data
+// const OLDDATA: OldUserCredentials = { username: "jalanie" };
 
 // placeholder for new data
 
 export default function EditProfile() {
+  const { user } = useAuth();
+  // placeholder for old data
+  const OLDDATA: OldUserCredentials = { username: user?.username };
+
   return (
     <>
       {/* scroll style */}
@@ -35,7 +41,9 @@ export default function EditProfile() {
           {/* icon and username wrapper */}
           <View style={styles.iconAndUsernameWrapper}>
             {/* icon */}
-            <View style={styles.iconView}></View>
+            <View style={styles.iconView}>
+              <FontAwesome name="user-circle" size={100} color={"#fff"}></FontAwesome>
+            </View>
 
             {/* old username displayed */}
             <Text style={styles.displayedUsername}>{OLDDATA.username}</Text>
@@ -46,19 +54,31 @@ export default function EditProfile() {
             {/* username */}
             <View style={styles.labelAndInput}>
               <Text style={styles.label}>Username</Text>
-              <TextInput style={styles.input} placeholder="Enter new username"></TextInput>
+              <TextInput
+                style={styles.input}
+                placeholder="Enter new username"
+                placeholderTextColor={"#aaa"}
+              ></TextInput>
             </View>
 
             {/* password */}
             <View style={styles.labelAndInput}>
               <Text style={styles.label}>Password</Text>
-              <TextInput style={styles.input} placeholder="Enter new password"></TextInput>
+              <TextInput
+                style={styles.input}
+                placeholder="Enter new password"
+                placeholderTextColor={"#aaa"}
+              ></TextInput>
             </View>
 
             {/* confirm pass */}
             <View style={styles.labelAndInput}>
               <Text style={styles.label}>Confirm Password</Text>
-              <TextInput style={styles.input} placeholder="Confirm new password"></TextInput>
+              <TextInput
+                style={styles.input}
+                placeholder="Confirm new password"
+                placeholderTextColor={"#aaa"}
+              ></TextInput>
             </View>
           </View>
         </View>
@@ -96,9 +116,13 @@ const styles = StyleSheet.create({
   iconView: {
     width: 120,
     height: 120,
-    backgroundColor: "#aaa",
+    // backgroundColor: "#4ecdc4",
     margin: 10,
     borderRadius: 100,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 5,
+    borderColor: "#fff",
   },
   displayedUsername: {
     fontSize: 24,
@@ -126,8 +150,8 @@ const styles = StyleSheet.create({
     padding: 5,
     borderRadius: 5,
     color: "#3d3d3d",
-    borderWidth: 1,
-    borderColor: "#3d3d3d",
+    // borderWidth: 1,
+    // borderColor: "#3d3d3d",
     height: 50,
   },
 

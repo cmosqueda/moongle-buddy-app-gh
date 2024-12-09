@@ -43,9 +43,9 @@ export const triggerDummyScreens = StyleSheet.create({
     borderRadius: 5,
   },
   buttonText: {
-    fontFamily: "helvetica",
+    fontFamily: "Poppins-Regular",
     // fontSize: 18,
-    fontWeight: "900",
+    // fontWeight: "900",
     color: "#fff",
   },
 });

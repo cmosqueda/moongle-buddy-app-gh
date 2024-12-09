@@ -18,6 +18,10 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
+    // position: "absolute",
+    width: "100%",
+    backgroundColor: "#fff",
+    // zIndex: 10,
   },
   childView: {
     flexDirection: "column",

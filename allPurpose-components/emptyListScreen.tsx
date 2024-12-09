@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { Icon } from "@expo/vector-icons/build/createIconSet";
+// import { Icon } from "@expo/vector-icons/build/createIconSet";
 
 interface EmptyDetails {
   title: string;

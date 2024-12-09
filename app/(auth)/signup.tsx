@@ -1,14 +1,74 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image } from "react-native";
+import { Text, View, TextInput, TouchableOpacity, ScrollView, Image, Alert } from "react-native";
 import { Link, router } from "expo-router";
-// import authStyles from "@/styles/authStyles";
 import authStyles from "../../styles/authStyles";
-import React from "react";
+import React, { useState } from "react";
+import { validateEmail, validatePassword } from "../../utilities/validationHelpers";
+import { useAuth } from "@/utilities/authProvider";
 
 export default function Signup() {
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [errors, setErrors] = useState({});
+  const [checkAccountExist, setCheckAccountExist] = useState<boolean>();
+
+  const { signup } = useAuth();
+
+  // HANDLE REGISTER
+  const handleRegister = async () => {
+    let tempErrors = {};
+
+    if (!userName || !email || !password || !confirmPassword) {
+      tempErrors.allFieldsRequired = "All fields are required";
+    }
+
+    if (!validateEmail(email)) {
+      tempErrors.email = "Invalid email format";
+    }
+
+    if (!validatePassword(password)) {
+      tempErrors.password =
+        "Password must be at least 8 characters, include one special character, and one uppercase letter";
+    }
+
+    if (password !== confirmPassword) {
+      tempErrors.confirmPassword = "Passwords do not match";
+    }
+
+    if (checkAccountExist === true) {
+      tempErrors.accountExist = "This account is already registered.";
+    }
+
+    if (Object.keys(tempErrors).length === 0) {
+      // for setting errors
+      setErrors({});
+
+      // end
+    } else {
+      setErrors(tempErrors);
+    }
+
+    // try catch block
+    try {
+      // use signup func from auth provider
+      await signup(userName, email, password);
+      setCheckAccountExist(false);
+
+      // router replace
+      router.replace("/(main)");
+    } catch (error) {
+      setCheckAccountExist(true);
+      // tempErrors.checkAccountExist = "This account is already registered.";
+      console.error("Error during signup", error);
+      Alert.alert("Registration failed", "There was a problem creating your account. Please try again.");
+    }
+  };
+
   return (
     <>
       {/* scroll style view */}
-      <ScrollView style={authStyles.scrollStyle}>
+      <ScrollView style={authStyles.scrollStyle} showsVerticalScrollIndicator={false}>
         {/* parent view */}
         <View style={authStyles.parentView}>
           {/* logo image */}
@@ -31,24 +91,67 @@ export default function Signup() {
 */}
           <View style={authStyles.formArea}>
             {/* username */}
-            <TextInput style={authStyles.textInput} placeholder="Username" placeholderTextColor={"gray"}></TextInput>
+            {errors.allFieldsRequired && <Text style={authStyles.isFalseText}>{errors.allFieldsRequired}</Text>}
+            <TextInput
+              textContentType="username"
+              style={authStyles.textInput}
+              placeholder="Username"
+              placeholderTextColor={"gray"}
+              value={userName}
+              onChangeText={setUserName}
+              // onChangeText={(value) => {
+              //   userName.current = value;
+              // }}
+            ></TextInput>
 
             {/* email */}
-            <TextInput style={authStyles.textInput} placeholder="E-mail" placeholderTextColor={"gray"}></TextInput>
+            <TextInput
+              textContentType="emailAddress"
+              style={authStyles.textInput}
+              placeholder="E-mail"
+              placeholderTextColor={"gray"}
+              value={email}
+              onChangeText={setEmail}
+              // onChangeText={(value) => {
+              //   email.current = value;
+              // }}
+            ></TextInput>
+            {errors.email && <Text style={authStyles.isFalseText}>{errors.email}</Text>}
+            {errors.accountExist && <Text style={authStyles.isFalseText}>{errors.accountExist}</Text>}
 
             {/* password */}
-            <TextInput style={authStyles.textInput} placeholder="Password" placeholderTextColor={"gray"}></TextInput>
+            <TextInput
+              secureTextEntry={true}
+              textContentType="password"
+              style={authStyles.textInput}
+              placeholder="Password"
+              placeholderTextColor={"gray"}
+              value={password}
+              onChangeText={setPassword}
+              // onChangeText={(value) => {
+              //   password.current = value;
+              // }}
+            ></TextInput>
+            {errors.password && <Text style={authStyles.isFalseText}>{errors.password}</Text>}
 
             {/* confirm pass */}
             <TextInput
+              secureTextEntry={true}
+              textContentType="password"
               style={authStyles.textInput}
               placeholder="Confirm Password"
               placeholderTextColor={"gray"}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              // onChangeText={(value) => {
+              //   confirmPassword.current = value;
+              // }}
             ></TextInput>
+            {errors.confirmPassword && <Text style={authStyles.isFalseText}>{errors.confirmPassword}</Text>}
 
             {/* continue button */}
             {/* nag simulate pako diri mao router push pa nakabutang*/}
-            <TouchableOpacity style={authStyles.continueButton} onPress={() => router.push("/(main)")}>
+            <TouchableOpacity style={authStyles.continueButton} onPress={() => handleRegister()}>
               <Text style={authStyles.continueLabel}>Continue</Text>
             </TouchableOpacity>
           </View>

@@ -15,11 +15,11 @@ type DataItem = {
 };
 
 const DATA: DataItem[] = [
-  { id: "1", title: "Item 1", owner: "John" },
-  { id: "2", title: "Item 2", owner: "Jane" },
-  { id: "3", title: "Item 3", owner: "John" },
-  { id: "4", title: "Item 4", owner: "Jane" },
-  { id: "5", title: "Item 1", owner: "John" },
+  // { id: "1", title: "Item 1", owner: "John" },
+  // { id: "2", title: "Item 2", owner: "Jane" },
+  // { id: "3", title: "Item 3", owner: "John" },
+  // { id: "4", title: "Item 4", owner: "Jane" },
+  // { id: "5", title: "Item 1", owner: "John" },
   // { id: "6", title: "Item 2", owner: "Jane" },
   // { id: "7", title: "Item 3", owner: "John" },
   // { id: "8", title: "Item 4", owner: "Jane" },
@@ -30,6 +30,8 @@ const DATA: DataItem[] = [
 ];
 
 export const HubList = () => {
+  // for actual data fetching
+
   // handle item select
   // handle press of a specific hub
   const handlePress = (item: DataItem) => {
@@ -46,7 +48,8 @@ export const HubList = () => {
   const renderItem = ({ item }: { item: DataItem }) => (
     // mag route sa ko diri for simulation
     <TouchableOpacity
-      onPress={() => router.push("/(hub)")}
+      // onPress={() => router.push("/(hub)")}
+      onPress={() => handlePress(item)}
       style={hubListStyles.item}
       onLongPress={() => handleLongPress()}
     >

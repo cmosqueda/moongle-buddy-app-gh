@@ -1,14 +1,18 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
+import { useAuth } from "@/utilities/authProvider";
+import { FontAwesome } from "@expo/vector-icons";
 
 type User = {
   username: string;
   level: number;
 };
 
-const DATA: User = { username: "jalanie", level: 3 };
-
 export const UserHeader = () => {
+  const { user } = useAuth();
+
+  const DATA: User = { username: user?.username, level: 3 };
+
   return (
     <>
       {/* parent container */}
@@ -24,7 +28,9 @@ export const UserHeader = () => {
 
         {/* icon view */}
         <View style={styles.iconView}>
-          <View style={styles.icon}></View>
+          <View style={styles.icon}>
+            <FontAwesome name="user-circle" color={"#fff"} size={40}></FontAwesome>
+          </View>
 
           <Text style={styles.levelLabel}>Level {DATA.level}</Text>
         </View>
@@ -72,11 +78,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   icon: {
-    backgroundColor: "#aaa",
+    backgroundColor: "#4ecdc4",
     height: 60,
     width: 60,
     marginVertical: 5,
     borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    //
   },
   levelLabel: {
     fontFamily: "Poppins-Regular",

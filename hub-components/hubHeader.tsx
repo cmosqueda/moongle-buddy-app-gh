@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
   },
   buttons: {
+    width: "45%",
     padding: 10,
     // margin: 5,
     alignItems: "center",

@@ -32,9 +32,10 @@ export default function MainLayout() {
             height: 60,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
-            paddingTop: 10,
+            // paddingTop: 10,
           },
           tabBarShowLabel: false,
+          tabBarLabelPosition: "beside-icon",
 
           // header bar
           headerStyle: {
@@ -61,29 +62,32 @@ export default function MainLayout() {
           ),
 
           // headerTitle
-          title: "",
+          // title: "",
+          headerTitleAlign: "center",
           animation: "shift",
         })}
       >
         <Tabs.Screen
           name="index"
           // component={Home}
-          options={{ headerRight: () => <SearchButton></SearchButton> }}
+          options={{ headerRight: () => <SearchButton></SearchButton>, title: "Home" }}
         ></Tabs.Screen>
         <Tabs.Screen
           name="hub"
           // component={Hub}
-          options={{ headerRight: () => <SearchButton></SearchButton> }}
+          options={{ headerRight: () => <SearchButton></SearchButton>, title: "Hub" }}
         ></Tabs.Screen>
         <Tabs.Screen
           name="options"
           // component={Options}
+          options={{ title: "Options" }}
         ></Tabs.Screen>
         <Tabs.Screen
           name="profile"
           //  component={Profile}
           options={{
             headerRight: () => <EditButton></EditButton>,
+            title: "Profile",
           }}
         ></Tabs.Screen>
       </Tabs>

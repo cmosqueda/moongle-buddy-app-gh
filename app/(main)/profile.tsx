@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView } from "react-native";
 import React from "react";
 // import { ProfileHeader } from "@/profile-components/profileHeader";
 // import { PlanStatus } from "@/profile-components/planStatus";

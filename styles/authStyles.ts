@@ -85,6 +85,12 @@ const authStyles = StyleSheet.create({
   forgotPassText: {
     color: "#4ECDC4",
   },
+
+  // validation
+  isFalseText: {
+    color: "#FF6B6B",
+    fontFamily: "Poppins-Regular",
+  },
 });
 
 export default authStyles;
