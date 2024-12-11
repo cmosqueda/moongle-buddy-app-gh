@@ -35,15 +35,8 @@ function AppContent() {
     return <SplashScreen />;
   }
 
-  // if (showOverlay) {
-  //   console.log(showOverlay, "lll");
-  //   // return <LoadingScreen />;
-  // }
-
-  // Render the overlay if `showOverlay` is true
   return (
     <>
-      {/* {showOverlay && <LoadingScreen />} */}
       <View style={{ flex: 1 }}>{/* Your App's Navigation */}</View>
     </>
   );

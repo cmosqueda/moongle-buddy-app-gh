@@ -1,93 +1,83 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, View, Text, TouchableOpacity, Alert } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-// import hubListStyles from "@/styles/hubListStyles";
+// import { Ionicons } from "@expo/vector-icons";
 import hubListStyles from "../styles/hubListStyles";
 import { router } from "expo-router";
 import { EmptyListScreen } from "../allPurpose-components/emptyListScreen";
-// import { checkArrLength } from "../utilities/checkArrayLength";
+import { fetchStudyHubsInRealTime } from "@/firebase-helpers/firestoreHelpers";
+import { useAuth } from "@/utilities/authProvider";
+import LoadingScreen from "@/transitional-screens/loadingScreen";
 
 // define type for the data items
 type DataItem = {
-  id: string;
-  title: string;
-  owner: string;
+  id: string; // hub id
+  title: string; // title of the hub
+  owner: string; // owner username
 };
 
-const DATA: DataItem[] = [
-  // { id: "1", title: "Item 1", owner: "John" },
-  // { id: "2", title: "Item 2", owner: "Jane" },
-  // { id: "3", title: "Item 3", owner: "John" },
-  // { id: "4", title: "Item 4", owner: "Jane" },
-  // { id: "5", title: "Item 1", owner: "John" },
-  // { id: "6", title: "Item 2", owner: "Jane" },
-  // { id: "7", title: "Item 3", owner: "John" },
-  // { id: "8", title: "Item 4", owner: "Jane" },
-  // { id: "9", title: "Item 1", owner: "John" },
-  // { id: "10", title: "Item 2", owner: "Jane" },
-  // { id: "11", title: "Item 3", owner: "John" },
-  // { id: "12", title: "Item 4", owner: "Jane" },
-];
-
 export const HubList = () => {
-  // for actual data fetching
+  const { user } = useAuth();
+  const userId = user?.uid;
 
-  // handle item select
-  // handle press of a specific hub
+  const [data, setData] = useState<DataItem[]>([]); // Holds the fetched hubs
+  const [error, setError] = useState<string | null>(null); // Holds any error message
+  const [loading, setLoading] = useState(true); // Track loading state
+
+  // Real-time data fetching using useEffect
+  useEffect(() => {
+    const unsubscribe = fetchStudyHubsInRealTime(
+      userId,
+      (fetchedData) => {
+        setData(fetchedData);
+        setLoading(false); // Stop loading when data is fetched
+      },
+      (fetchError) => {
+        setError(fetchError);
+        setLoading(false); // Stop loading in case of an error
+      }
+    );
+
+    return () => {
+      unsubscribe();
+    };
+  }, [userId]);
+
+  // Handle item selection
   const handlePress = (item: DataItem) => {
-    Alert.alert("Clicked", `You clicked on ${item.title}`);
+    router.push("/(hub)");
   };
 
   const handleLongPress = () => {
     Alert.alert("Long Press", "You long pressed on the list");
   };
 
-  // fetch data
-
-  // item render
+  // Item renderer
   const renderItem = ({ item }: { item: DataItem }) => (
-    // mag route sa ko diri for simulation
-    <TouchableOpacity
-      // onPress={() => router.push("/(hub)")}
-      onPress={() => handlePress(item)}
-      style={hubListStyles.item}
-      onLongPress={() => handleLongPress()}
-    >
-      <Text style={hubListStyles.itemTitle}>{item.title}</Text>
-      <Text style={hubListStyles.ownedByLabel}>Owned by {item.owner}</Text>
+    <TouchableOpacity onPress={() => handlePress(item)} style={hubListStyles.item} onLongPress={handleLongPress}>
+      <Text style={hubListStyles.itemTitle}>{item.title || "Untitled Hub"}</Text>
+      <Text style={hubListStyles.ownedByLabel}>Owned by {item.owner || "Unknown"}</Text>
     </TouchableOpacity>
   );
 
-  // check if data is empty huhu
-  if (DATA.length === 0) {
-    console.log("empty data in hub");
+  // Render loading screen if fetching data
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
+  // Render an empty list message if there are no hubs
+  if (data.length === 0) {
     return (
-      <>
-        <EmptyListScreen
-          title="No Hubs Found"
-          message="You don't have any hub yet. Click the red button on the topright corner to create one."
-          iconName="folder-open-outline"
-        ></EmptyListScreen>
-      </>
+      <EmptyListScreen
+        title="No Hubs Found"
+        message="You don't have any hub yet. Click the red button on the top right corner to create one."
+        iconName="folder-open-outline"
+      />
     );
-  } else {
-    console.log("data in hub");
   }
 
   return (
-    <>
-      {/* container */}
-      <View style={hubListStyles.container}>
-        <FlatList
-          data={DATA}
-          keyExtractor={(item) => item.id}
-          renderItem={renderItem}
-          // nestedScrollEnabled={true}
-          scrollEnabled={false}
-          // ListHeaderComponent={() => (
-          // )}
-        ></FlatList>
-      </View>
-    </>
+    <View style={hubListStyles.container}>
+      <FlatList data={data} keyExtractor={(item) => item.id} renderItem={renderItem} scrollEnabled={true} />
+    </View>
   );
 };

@@ -7,11 +7,11 @@ import { CreateHubModal } from "../modal-components/createHubModal";
 export const CreateHub = () => {
   const [isModalVisible, setModalVisible] = useState(false);
 
-  const openModal = () => setModalVisible(true);
-  const closeModal = () => setModalVisible(false);
-
-  const handleContinue = () => {
-    console.log("Continue button pressed");
+  const openModal = () => {
+    setModalVisible(true);
+  };
+  const closeModal = () => {
+    setModalVisible(false);
   };
 
   return (
@@ -19,11 +19,11 @@ export const CreateHub = () => {
       <View style={hubListStyles.headerView}>
         <Text style={hubListStyles.headerTitle}>Study Hub</Text>
         {/* plus button */}
-        <TouchableOpacity style={hubListStyles.plusButton} onPress={openModal}>
+        <TouchableOpacity style={hubListStyles.plusButton} onPress={() => openModal()}>
           <MaterialIcons name="create-new-folder" size={24} color="#fff" />
         </TouchableOpacity>
 
-        <CreateHubModal visible={isModalVisible} onClose={closeModal} onContinue={handleContinue}></CreateHubModal>
+        <CreateHubModal visible={isModalVisible} onClose={closeModal}></CreateHubModal>
       </View>
     </>
   );

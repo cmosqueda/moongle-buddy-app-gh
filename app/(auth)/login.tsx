@@ -1,12 +1,12 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Image, Alert } from "react-native";
 import { Link, router } from "expo-router";
 import authStyles from "../../styles/authStyles";
-import { linkTo } from "expo-router/build/global-state/routing";
+// import { linkTo } from "expo-router/build/global-state/routing";
 import React, { useState } from "react";
 import { useAuth } from "@/utilities/authProvider";
-import { saveSession, validateEmail } from "@/utilities";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { FIREBASE_AUTH } from "@/firebase-helpers/firebaseConfig";
+import { validateEmail } from "@/utilities";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { FIREBASE_AUTH } from "@/firebase-helpers/firebaseConfig";
 
 export default function Login() {
   const [email, setEmail] = useState("");

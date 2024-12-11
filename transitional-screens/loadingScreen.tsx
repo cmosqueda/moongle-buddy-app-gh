@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // position: "absolute",
     width: "100%",
-    backgroundColor: "#fff",
+    backgroundColor: "#f2f2f2",
     // zIndex: 10,
   },
   childView: {
