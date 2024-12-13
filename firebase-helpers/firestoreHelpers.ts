@@ -13,6 +13,7 @@ import {
   FirestoreError,
   QuerySnapshot,
   DocumentData,
+  getDoc,
 } from "firebase/firestore";
 
 /**
@@ -174,3 +175,152 @@ export const addQuestionToQuiz = async (
     }
   }
 };
+
+/**
+ * Fetches all quizzes for a specific study hub in real-time.
+ * @param {string} userId - The ID of the user whose quizzes are being fetched.
+ * @param {string} studyHubId - The ID of the study hub from which quizzes are fetched.
+ * @param {Function} setData - The function to update the UI state with the fetched quizzes.
+ * @param {Function} setError - The function to update the UI state with error messages.
+ */
+export const fetchQuizzesInRealTime = (
+  userId: string,
+  studyHubId: string,
+  setData: (data: any[]) => void,
+  setError: (error: string | null) => void
+) => {
+  try {
+    // Reference to the quizzes collection
+    const quizzesRef = collection(FIREBASE_DB, `users/${userId}/studyHubs/${studyHubId}/quizzes`);
+
+    // Real-time listener to fetch quizzes
+    const unsubscribe = onSnapshot(
+      quizzesRef,
+      (snapshot: QuerySnapshot<DocumentData>) => {
+        // Map through each document and format it
+        const quizzes = snapshot.docs.map((doc) => {
+          const data = doc.data();
+          return {
+            id: doc.id, // Use the document ID
+            title: data.name || "Untitled", // Default to "Untitled" if name is missing
+            createdBy: data.createdBy || "Unknown", // Default to "Unknown" if owner is missing
+            createdAt: data.createdAt ? data.createdAt.toDate() : null, // Convert timestamp
+            questions: data.questions || [], // Default to an empty array if questions are missing
+          };
+        });
+
+        console.log("Fetched quizzes:", quizzes); // Log to verify data
+        setData(quizzes); // Update UI state
+      },
+      (error) => {
+        console.error("Error listening to quizzes:", error);
+        setError("Failed to listen to quizzes. Please try again.");
+      }
+    );
+
+    // Return the unsubscribe function to clean up the listener
+    return unsubscribe;
+  } catch (error) {
+    console.error("Unexpected error in fetchQuizzesInRealTime:", error);
+    setError("An unexpected error occurred while fetching quizzes.");
+    return () => {}; // Return a no-op cleanup function
+  }
+};
+
+/**
+ * Fetches a quiz's data by its ID for a specific user and study hub.
+ * @param {string} userId - The ID of the user owning the quiz.
+ * @param {string} studyHubId - The ID of the study hub containing the quiz.
+ * @param {string} quizId - The ID of the quiz to fetch.
+ * @returns {Promise<Object>} - The quiz data.
+ * @throws {Error} - Throws an error if fetching the quiz fails.
+ */
+export const fetchQuiz = async (userId: string, studyHubId: string, quizId: string): Promise<any> => {
+  try {
+    const quizRef = doc(FIREBASE_DB, `users/${userId}/studyHubs/${studyHubId}/quizzes/${quizId}`);
+    const quizDoc = await getDoc(quizRef);
+
+    if (!quizDoc.exists()) {
+      throw new Error("Quiz not found.");
+    }
+
+    return quizDoc.data();
+  } catch (error) {
+    console.error("Error fetching quiz:", error);
+    throw new Error("Failed to fetch quiz.");
+  }
+};
+
+/**
+ * Updates an existing quiz's data.
+ * @param {string} userId - The ID of the user owning the quiz.
+ * @param {string} studyHubId - The ID of the study hub containing the quiz.
+ * @param {string} quizId - The ID of the quiz to update.
+ * @param {Object} updatedData - The updated quiz data.
+ * @returns {Promise<void>} - Resolves when the quiz is updated successfully.
+ * @throws {Error} - Throws an error if updating the quiz fails.
+ */
+export const updateQuiz = async (
+  userId: string,
+  studyHubId: string,
+  quizId: string,
+  updatedData: {
+    name?: string;
+    questions: Array<{ question: string; options: string[]; correctAnswer: string }>;
+  }
+): Promise<void> => {
+  try {
+    const quizRef = doc(FIREBASE_DB, `users/${userId}/studyHubs/${studyHubId}/quizzes/${quizId}`);
+    await updateDoc(quizRef, updatedData);
+  } catch (error) {
+    console.error("Error updating quiz:", error);
+    throw new Error("Failed to update quiz.");
+  }
+};
+
+export const getQuizById = async (userId: string, hubId: string, quizId: string) => {
+  try {
+    // Reference to the quiz document
+    const quizRef = doc(FIREBASE_DB, `users/${userId}/studyHubs/${hubId}/quizzes/${quizId}`);
+
+    // Fetch the document
+    const quizSnapshot = await getDoc(quizRef);
+
+    if (quizSnapshot.exists()) {
+      console.log("Quiz data fetched successfully:", quizSnapshot.data());
+      return quizSnapshot.data(); // Returns the data
+    } else {
+      console.error("No such quiz document found.");
+      return null; // Document does not exist
+    }
+  } catch (error) {
+    console.error("Error fetching quiz document:", error);
+    throw error; // Rethrow to handle in the caller
+  }
+};
+
+// export const updateQuiz = async (userId: string, studyHubId: string, quizId: string, quizData: any) => {
+//   try {
+//     const quizRef = doc(FIREBASE_DB, `users/${userId}/studyHubs/${studyHubId}/quizzes/${quizId}`);
+//     await updateDoc(quizRef, quizData);
+//     console.log("Quiz updated successfully.");
+//   } catch (error) {
+//     console.error("Error updating quiz:", error);
+//     throw error;
+//   }
+// };
+
+// export const updateQuiz = async (userId: string, studyHubId: string, quizId: string, quizData: any): Promise<void> => {
+//   try {
+//     const quizRef = doc(FIREBASE_DB, `users/${userId}/studyHubs/${studyHubId}/quizzes/${quizId}`);
+//     await updateDoc(quizRef, quizData);
+//     console.log("Quiz updated successfully:", quizId);
+//   } catch (error: unknown) {
+//     console.error("Error updating quiz:", error);
+//     if (error instanceof Error) {
+//       throw new Error(`Failed to update quiz: ${error.message}`);
+//     } else {
+//       throw new Error("An unknown error occurred while updating the quiz.");
+//     }
+//   }
+// };

@@ -19,7 +19,8 @@ export default function RootLayout() {
             <Stack.Screen name="(search)"></Stack.Screen>
             <Stack.Screen name="(editProfile)"></Stack.Screen>
             <Stack.Screen name="(hub)"></Stack.Screen>
-            <Stack.Screen name="(quiz)"></Stack.Screen>
+            <Stack.Screen name="(createQuiz)"></Stack.Screen>
+            <Stack.Screen name="(editQuiz)"></Stack.Screen>
             <Stack.Screen name="app"></Stack.Screen>
             <Stack.Screen name="+not-found"></Stack.Screen>
           </Stack>

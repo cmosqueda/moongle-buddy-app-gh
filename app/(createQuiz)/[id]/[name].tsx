@@ -69,6 +69,7 @@ export default function CreateQuiz() {
     updatedQuestions[questionIndex].options = updatedQuestions[questionIndex].options.filter(
       (_, i) => i !== optionIndex
     );
+
     setQuestions(updatedQuestions);
   };
 

@@ -167,6 +167,12 @@ const modalStyles = StyleSheet.create({
     fontFamily: "Poppins-Bold",
     color: "#3d3d3d",
   },
+
+  // quiz id label:
+  quizIdLabel: {
+    fontFamily: "Poppins-Italic",
+    color: "#3d3d3d",
+  },
 });
 
 export default modalStyles;
