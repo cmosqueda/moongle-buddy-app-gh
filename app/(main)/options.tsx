@@ -11,6 +11,7 @@ import { TriggerLoading } from "@/options-components/triggerLoadingButton";
 // import LoadingScreen from "../../transitional-screens/loadingScreen";
 import { FirebaseTestRead, FirebaseTestWrite } from "@/options-components/triggerFirebaseTests";
 import { TriggerCreateQuizModal } from "@/options-components/triggerCreateQuizModal";
+import { TriggerQuizActionModal } from "@/options-components/triggerQuizActionModal";
 
 export default function Options() {
   return (
@@ -33,6 +34,9 @@ export default function Options() {
 
           {/* dummy to trigger create quiz modal */}
           <TriggerCreateQuizModal></TriggerCreateQuizModal>
+
+          {/* dummy to trigger quiz action modal */}
+          <TriggerQuizActionModal></TriggerQuizActionModal>
 
           {/* trigger firebase tests */}
           <FirebaseTestWrite></FirebaseTestWrite>

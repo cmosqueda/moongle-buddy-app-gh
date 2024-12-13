@@ -7,20 +7,37 @@ import { FontAwesome6, Ionicons, MaterialIcons } from "@expo/vector-icons";
 interface UploadFileModalProps {
   visible: boolean;
   onClose: () => void;
-  onContinue: () => void;
-  onFileUpload: () => void;
-  files: { id: number; name: string }[];
-  onDiscard: () => void;
+  // onContinue: () => void;
+  // onFileUpload: () => void;
+  // files: { id: number; name: string }[];
+  // onDiscard: () => void;
 }
 
 export const UploadFileModal: React.FC<UploadFileModalProps> = ({
   visible,
   onClose,
-  onContinue,
-  files,
-  onFileUpload,
-  onDiscard,
+  // onContinue,
+  // files,
+  // onFileUpload,
+  // onDiscard,
 }) => {
+  //
+
+  const [files, setFiles] = useState<{ id: number; name: string }[]>([]);
+
+  const handleContinue = () => {
+    console.log("Continue file upload button pressed");
+  };
+
+  const handleUploadFile = () => {
+    const mockFile = { id: Date.now(), name: `File_${Date.now()}.txt` };
+    setFiles((prevFiles) => [...prevFiles, mockFile]);
+  };
+
+  const handleDiscardFile = () => {
+    console.log("Discarded this file");
+  };
+
   return (
     <>
       {/* modal */}
@@ -36,7 +53,7 @@ export const UploadFileModal: React.FC<UploadFileModalProps> = ({
           {/* upload area wrapper view */}
           <View style={modalStyles.inputWrapperView}>
             {/* upload area */}
-            <TouchableOpacity onPress={onFileUpload} style={modalStyles.uploadAreaButton}>
+            <TouchableOpacity onPress={() => handleUploadFile()} style={modalStyles.uploadAreaButton}>
               <Text style={modalStyles.uploadAreaText}>Click to Upload</Text>
             </TouchableOpacity>
 
@@ -50,7 +67,7 @@ export const UploadFileModal: React.FC<UploadFileModalProps> = ({
                 // rendering component
                 <View style={modalStyles.uploadedFileItem}>
                   <Text style={modalStyles.uploadedFileTitle}>{item.name}</Text>
-                  <TouchableOpacity style={modalStyles.uploadedFileDelIcon} onPress={onDiscard}>
+                  <TouchableOpacity style={modalStyles.uploadedFileDelIcon} onPress={() => handleDiscardFile()}>
                     <MaterialIcons name="delete" size={24} color={"#aaa"}></MaterialIcons>
                   </TouchableOpacity>
                 </View>
@@ -67,7 +84,7 @@ export const UploadFileModal: React.FC<UploadFileModalProps> = ({
             </TouchableOpacity>
 
             {/* continue */}
-            <TouchableOpacity onPress={onContinue} style={modalStyles.continueButton}>
+            <TouchableOpacity onPress={() => handleContinue()} style={modalStyles.continueButton}>
               <Text style={modalStyles.continueButtonText}>Continue</Text>
             </TouchableOpacity>
           </View>

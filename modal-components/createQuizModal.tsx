@@ -1,24 +1,38 @@
 import React, { useState } from "react";
 import modalStyles from "@/styles/modalStyles";
 import { View, Text, Modal, TouchableOpacity, TextInput, Alert } from "react-native";
+import CreateQuiz from "@/app/(createQuiz)/[id]/[name]";
+import { ScrollView } from "react-native-gesture-handler";
+import { router } from "expo-router";
 
 interface CreateQuizModalProps {
   visible: boolean;
   onClose: () => void;
+  hubId: string | string[];
 }
 
-export const CreateQuizModal: React.FC<CreateQuizModalProps> = ({ visible, onClose }) => {
-  // logic here
+export const CreateQuizModal: React.FC<CreateQuizModalProps> = ({ visible, onClose, hubId }) => {
   const [quizName, setQuizName] = useState<string>();
+  // const [showCreateQuizScreen, setShowCreateQuizScreen] = useState<boolean>(false);
 
-  //   handle continue
-  const handleContinue = async () => {
-    console.log("Continue pressed");
+  // Handle continue to the create quiz screen
+  const handleContinue = () => {
+    if (!quizName) {
+      Alert.alert("Input Required", "Quiz name can't be empty. Please name your quiz.");
+      return;
+    }
+
+    // Proceed to the create quiz screen
+    // setShowCreateQuizScreen(true);
+    console.log("hub id:", hubId);
+    console.log("quiz name:", quizName);
+    router.push(`/(createQuiz)/${hubId}/${quizName}`);
+    onClose();
   };
 
   return (
     <>
-      {/* modal */}
+      {/* Main Modal */}
       <Modal
         style={modalStyles.modal}
         visible={visible}
@@ -26,41 +40,41 @@ export const CreateQuizModal: React.FC<CreateQuizModalProps> = ({ visible, onClo
         transparent={true}
         onRequestClose={onClose}
       >
-        {/* OVERLAY */}
+        {/* Overlay */}
         <TouchableOpacity style={modalStyles.overlay} onPress={onClose}></TouchableOpacity>
 
-        {/* BOTTOM SHEET */}
+        {/* Bottom Sheet */}
         <View style={modalStyles.bottomSheet}>
-          {/* sheet title */}
+          {/* Sheet Title */}
           <Text style={modalStyles.sheetTitle}>Create Quiz</Text>
 
-          {/* quiz name input wrapper view */}
+          {/* Quiz Name Input Wrapper */}
           <View style={modalStyles.inputWrapperView}>
-            {/* input label */}
+            {/* Input Label */}
             <Text style={modalStyles.inputLabel}>Quiz Name</Text>
-            {/* sheet input field */}
+
+            {/* Input Field */}
             <TextInput
               style={modalStyles.inputField}
               placeholder="Name your quiz"
               placeholderTextColor={"#aaa"}
               value={quizName}
               onChangeText={(text) => setQuizName(text)}
-            ></TextInput>
+            />
           </View>
 
-          {/* close or continue wrapper veiw */}
+          {/* Action Buttons */}
           <View style={modalStyles.twoColButtonWrapperView}>
-            {/* close */}
+            {/* Cancel */}
             <TouchableOpacity style={modalStyles.cancelButton} onPress={onClose}>
               <Text style={modalStyles.cancelButtonText}>Cancel</Text>
             </TouchableOpacity>
 
-            {/* continue */}
+            {/* Continue */}
             <TouchableOpacity style={modalStyles.continueButton} onPress={handleContinue}>
               <Text style={modalStyles.continueButtonText}>Continue</Text>
             </TouchableOpacity>
           </View>
-          {/*  */}
         </View>
       </Modal>
     </>

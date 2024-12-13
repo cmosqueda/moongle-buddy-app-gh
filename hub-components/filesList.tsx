@@ -45,7 +45,6 @@ export const FilesList = () => {
           message="You don't have any files yet."
           iconName="folder-open-outline"
         ></EmptyListScreen>
-        ;
       </>
     );
   }

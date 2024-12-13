@@ -27,7 +27,8 @@ export const CreateHubModal: React.FC<CreateHubModalProps> = ({ visible, onClose
     console.log("Continue pressed");
 
     // Check if the study hub name is empty
-    if (studyHubName === "") {
+    if (studyHubName === undefined) {
+      console.log("Study hub must be named");
       return; // Exit the function early
     }
 
@@ -84,13 +85,13 @@ export const CreateHubModal: React.FC<CreateHubModalProps> = ({ visible, onClose
           {/* close or continue wrapper view */}
           <View style={modalStyles.twoColButtonWrapperView}>
             {/* close */}
-            <TouchableOpacity style={modalStyles.cancelButton} onPress={onClose}>
+            <TouchableOpacity style={modalStyles.cancelButton} onPress={() => onClose()}>
               <Text style={modalStyles.cancelButtonText}>Cancel</Text>
             </TouchableOpacity>
 
             {/* continue */}
             {/* magbutang ug logic na if walay name kay mag appear ang error */}
-            <TouchableOpacity style={modalStyles.continueButton} onPress={handleContinue}>
+            <TouchableOpacity style={modalStyles.continueButton} onPress={() => handleContinue()}>
               <Text style={modalStyles.continueButtonText}>Continue</Text>
             </TouchableOpacity>
           </View>

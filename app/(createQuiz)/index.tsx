@@ -1,13 +1,11 @@
-// create or edit quiz
-
 import React from "react";
 import { Text, View } from "react-native";
 
-export default function QuizIndex() {
+export default function CreateQuizIndex() {
   return (
     <>
       <View>
-        <Text>This is Quiz index</Text>
+        <Text>This is index</Text>
       </View>
     </>
   );

@@ -1,9 +1,8 @@
-// import { HubHeader } from "@/hub-components/hubHeader";
-// import { QuizzesList } from "@/hub-components/quizzesList";
-import { HubHeader } from "../../hub-components/hubHeader";
-import { QuizzesList } from "../../hub-components/quizzesList";
+import { HubHeader } from "@/hub-components/hubHeader";
+import { QuizzesList } from "@/hub-components/quizzesList";
 import React from "react";
 import { ScrollView, View } from "react-native";
+// import { useLocalSearchParams, useRouter } from "expo-router";
 
 export default function Quizzes() {
   return (
@@ -13,7 +12,7 @@ export default function Quizzes() {
         {/* parent view */}
         <View>
           {/* hub header => hub details */}
-          <HubHeader></HubHeader>
+          {/* <HubHeader></HubHeader> */}
 
           {/* quiz list */}
           <QuizzesList></QuizzesList>

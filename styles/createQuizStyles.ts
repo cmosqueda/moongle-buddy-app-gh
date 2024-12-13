@@ -1,0 +1,141 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 20,
+    paddingVertical: 40,
+    // backgroundColor: "#EFEEEE",
+  },
+  header: {
+    fontSize: 24,
+    // fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
+    fontFamily: "Poppins-Bold",
+    color: "#3d3d3d",
+  },
+  questionContainer: {
+    marginBottom: 20,
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: "#fff",
+    elevation: 3,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+  },
+  label: {
+    fontSize: 18,
+    // fontWeight: "600",
+    marginTop: 20,
+    marginBottom: 10,
+    color: "#3d3d3d",
+    fontFamily: "Poppins-Bold",
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+    backgroundColor: "#fff",
+    color: "#3d3d3d",
+    fontFamily: "Poppins-Regular",
+  },
+  picker: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+    backgroundColor: "#fff",
+    color: "#3d3d3d",
+    fontFamily: "Poppins-Regular",
+  },
+  addButton: {
+    backgroundColor: "#4ECDC4",
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  addText: {
+    color: "#fff",
+    // fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
+  },
+  addChoiceButton: {
+    backgroundColor: "#FFE66D",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 10,
+  },
+  addChoiceText: {
+    color: "#3d3d3d",
+    // fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
+  },
+  deleteChoiceButton: {
+    backgroundColor: "#FF6B6B",
+    padding: 5,
+    borderRadius: 5,
+    marginTop: 5,
+    alignItems: "center",
+  },
+  deleteChoiceText: {
+    color: "#fff",
+    // fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
+  },
+  deleteButton: {
+    backgroundColor: "#FF6B6B",
+    padding: 10,
+    borderRadius: 10,
+    alignItems: "center",
+    marginTop: 10,
+  },
+  deleteText: {
+    color: "#fff",
+    // fontWeight: "bold",
+    fontFamily: "Poppins-Bold",
+  },
+  optionContainer: {
+    marginVertical: 10,
+  },
+  // line
+  lineBreak: {
+    marginVertical: 10,
+    height: 1,
+    backgroundColor: "#aaa",
+  },
+  // discard or save wrapper
+  discardOrSaveWrapper: {
+    flexDirection: "row",
+    justifyContent: "center",
+    // width: "100%",
+  },
+  discardButton: {
+    margin: 10,
+    padding: 20,
+    alignItems: "center",
+    backgroundColor: "#FF6B6B",
+    borderRadius: 5,
+  },
+  discardButtonText: {
+    color: "#fff",
+    fontFamily: "Poppins-Bold",
+  },
+  saveButton: {
+    margin: 10,
+    padding: 20,
+    alignItems: "center",
+    backgroundColor: "#FFE66D",
+    borderRadius: 5,
+  },
+  saveButtonText: {
+    color: "#3d3d3d",
+    fontFamily: "Poppins-Bold",
+  },
+});

@@ -126,6 +126,47 @@ const modalStyles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     color: "#aaa",
   },
+
+  // quiz action modal
+  actionButtonsWrapper: {
+    flexDirection: "row",
+    marginVertical: 20,
+    justifyContent: "center",
+  },
+
+  actionButtonColWrapper: {},
+  redActionButton: {
+    backgroundColor: "#FF6B6B",
+    alignItems: "center",
+    paddingVertical: 15,
+    paddingHorizontal: 25,
+    borderRadius: 5,
+    margin: 5,
+  },
+  yellowActionButton: {
+    backgroundColor: "#FFE66D",
+    alignItems: "center",
+    paddingVertical: 15,
+    paddingHorizontal: 25,
+    borderRadius: 5,
+    margin: 5,
+  },
+  greenActionButton: {
+    backgroundColor: "#4ecdc4",
+    alignItems: "center",
+    paddingVertical: 15,
+    paddingHorizontal: 25,
+    borderRadius: 5,
+    margin: 5,
+  },
+  lightButtonLabel: {
+    fontFamily: "Poppins-Bold",
+    color: "#fff",
+  },
+  darkButtonLabel: {
+    fontFamily: "Poppins-Bold",
+    color: "#3d3d3d",
+  },
 });
 
 export default modalStyles;

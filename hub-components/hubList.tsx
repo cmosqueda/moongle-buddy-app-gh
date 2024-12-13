@@ -7,6 +7,7 @@ import { EmptyListScreen } from "../allPurpose-components/emptyListScreen";
 import { fetchStudyHubsInRealTime } from "@/firebase-helpers/firestoreHelpers";
 import { useAuth } from "@/utilities/authProvider";
 import LoadingScreen from "@/transitional-screens/loadingScreen";
+import Files from "@/app/(hub)/files/[id]";
 
 // define type for the data items
 type DataItem = {
@@ -44,7 +45,16 @@ export const HubList = () => {
 
   // Handle item selection
   const handlePress = (item: DataItem) => {
-    router.push("/(hub)");
+    // router.push(`/(hub)?id=${item.id}&title=${item.title}&owner=${item.owner}`);
+    router.push(`/(hub)/files/${item.id}`);
+    // router.push(`/(hub)/quizzes/${item.id}`);
+    // router.push("/(hub)");
+
+    console.log("hub id:", item.id);
+    console.log("hub title:", item.title);
+    console.log("hub owner:", item.owner);
+
+    // Files();
   };
 
   const handleLongPress = () => {

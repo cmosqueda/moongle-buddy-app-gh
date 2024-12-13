@@ -6,6 +6,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
 // import hubScreensStyles from "@/styles/hubScreensStyles";
 import hubScreensStyles from "../styles/hubScreensStyles";
+import { EmptyListScreen } from "@/allPurpose-components/emptyListScreen";
 
 // type for quiz
 type DataItem = {
@@ -15,10 +16,10 @@ type DataItem = {
 };
 
 const DATA: DataItem[] = [
-  { id: "1", title: "quiz", owner: "John" },
-  { id: "2", title: "quiz2", owner: "Jane" },
-  { id: "3", title: "quiz3", owner: "John" },
-  { id: "4", title: "quiz4", owner: "Jane" },
+  // { id: "1", title: "quiz", owner: "John" },
+  // { id: "2", title: "quiz2", owner: "Jane" },
+  // { id: "3", title: "quiz3", owner: "John" },
+  // { id: "4", title: "quiz4", owner: "Jane" },
 ];
 
 export const QuizzesList = () => {
@@ -35,6 +36,18 @@ export const QuizzesList = () => {
       </>
     );
   };
+
+  if (DATA.length === 0) {
+    return (
+      <>
+        <EmptyListScreen
+          title="No files"
+          message="You don't have any files yet."
+          iconName="folder-open-outline"
+        ></EmptyListScreen>
+      </>
+    );
+  }
 
   return (
     <>
