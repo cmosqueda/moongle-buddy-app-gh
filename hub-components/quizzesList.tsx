@@ -40,18 +40,15 @@ export const QuizzesList = () => {
   const [loading, setLoading] = useState(true);
 
   const onEdit = () => {
-    console.log("Pressed on edit");
-    console.log("the hub id:", selectedQuiz?.hubId);
-    console.log("the quiz id:", selectedQuiz?.id);
-    console.log("the quiz title:", selectedQuiz?.title);
-
     // Navigate to the editQuiz screen with the quiz id and title
     if (selectedQuiz) {
       // router.push(`/(editQuiz)/${hubId}/${id}/${name}`);
-      router.push({
-        pathname: "/(editQuiz)/[hubId]/[id]/[name]",
-        params: { hubId: selectedQuiz.hubId, id: selectedQuiz.id, name: selectedQuiz.title },
-      });
+      // go to edit quiz
+      router.push(`/${hubId}/${id}/${name}`);
+      console.log("Pressed on edit");
+      console.log("the hub id:", selectedQuiz?.hubId);
+      console.log("the quiz id:", selectedQuiz?.id);
+      console.log("the quiz title:", selectedQuiz?.title);
     }
   };
 

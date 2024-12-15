@@ -26,7 +26,7 @@ export const CreateQuizModal: React.FC<CreateQuizModalProps> = ({ visible, onClo
     // setShowCreateQuizScreen(true);
     console.log("hub id:", hubId);
     console.log("quiz name:", quizName);
-    router.push(`/(createQuiz)/${hubId}/${quizName}`);
+    router.push(`/${hubId}/${quizName}`);
     onClose();
   };
 
