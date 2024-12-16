@@ -31,20 +31,20 @@ export default function Options() {
           {/* <TriggerSplash></TriggerSplash> */}
 
           {/* dummy to ttrigger loading screen */}
-          <TriggerLoading></TriggerLoading>
+          {/* <TriggerLoading></TriggerLoading> */}
 
           {/* dummy to trigger create quiz modal */}
-          <TriggerCreateQuizModal></TriggerCreateQuizModal>
+          {/* <TriggerCreateQuizModal></TriggerCreateQuizModal> */}
 
           {/* dummy to trigger quiz action modal */}
-          <TriggerQuizActionModal></TriggerQuizActionModal>
+          {/* <TriggerQuizActionModal></TriggerQuizActionModal> */}
 
           {/* dummy to trigger hub action modal */}
-          <TriggerHubActionModal></TriggerHubActionModal>
+          {/* <TriggerHubActionModal></TriggerHubActionModal> */}
 
           {/* trigger firebase tests */}
-          <FirebaseTestWrite></FirebaseTestWrite>
-          <FirebaseTestRead></FirebaseTestRead>
+          {/* <FirebaseTestWrite></FirebaseTestWrite> */}
+          {/* <FirebaseTestRead></FirebaseTestRead> */}
         </View>
       </ScrollView>
     </>
