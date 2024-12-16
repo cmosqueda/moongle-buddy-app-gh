@@ -1,36 +1,52 @@
-import { StyleSheet, TouchableOpacity, ScrollView, Text, TextInput, View } from "react-native";
+import { StyleSheet, TouchableOpacity, ScrollView, Text, TextInput, View, Alert } from "react-native";
 import { router } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "@/utilities/authProvider";
 import { FontAwesome } from "@expo/vector-icons";
+import { changeCredentials, reauthenticateUser } from "@/firebase-helpers";
 
-// type for old user credentials
-type OldUserCredentials = {
-  // displayed at the header
-  username: string;
-};
-
-// type for new user credentials
-type NewUserCredentials = {
-  // should accept the new username
-  newUsername: string;
-
-  // should accept the new password
-  newPassword: string;
-
-  // should check if it matches newly entered password
-  confirmPassword: string;
-};
-
-// // placeholder for old data
-// const OLDDATA: OldUserCredentials = { username: "jalanie" };
-
-// placeholder for new data
+// usernameFieldInput => for username text field
+// newPasswordInput => for new password text field
+// confirmNewPassInput => for confirm new password text field
 
 export default function EditProfile() {
+  const [usernameInput, setUsernameInput] = useState("");
+  const [newPasswordInput, setNewPasswordInput] = useState("");
+  const [confirmNewPassInput, setConfirmNewPassInput] = useState("");
+
   const { user } = useAuth();
+  const { reloadUser } = useAuth();
   // placeholder for old data
-  const OLDDATA: OldUserCredentials = { username: user?.username };
+  const username = user?.username;
+  const userEmail = user?.email;
+  const userPassword = user?.password;
+
+  // action
+  const pressedSaveChanges = async () => {
+    if (usernameInput === "" || newPasswordInput === "" || confirmNewPassInput === "") {
+      console.log("Required to fill in all text fields.");
+      return;
+    }
+
+    if (newPasswordInput !== confirmNewPassInput) {
+      console.log("Passwords do not match.");
+      return;
+    }
+
+    try {
+      await reauthenticateUser(userEmail, userPassword);
+      await changeCredentials(usernameInput, newPasswordInput);
+      setUsernameInput("");
+      setNewPasswordInput("");
+      setConfirmNewPassInput("");
+      await reloadUser();
+      Alert.alert("Credentials changed", "You have successfully changed your account credentials.");
+
+      console.log("Changes saved successfully!");
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
   return (
     <>
@@ -46,7 +62,7 @@ export default function EditProfile() {
             </View>
 
             {/* old username displayed */}
-            <Text style={styles.displayedUsername}>{OLDDATA.username}</Text>
+            <Text style={styles.displayedUsername}>{username}</Text>
           </View>
 
           {/* form field */}
@@ -58,6 +74,8 @@ export default function EditProfile() {
                 style={styles.input}
                 placeholder="Enter new username"
                 placeholderTextColor={"#aaa"}
+                value={usernameInput}
+                onChangeText={setUsernameInput}
               ></TextInput>
             </View>
 
@@ -68,6 +86,8 @@ export default function EditProfile() {
                 style={styles.input}
                 placeholder="Enter new password"
                 placeholderTextColor={"#aaa"}
+                value={newPasswordInput}
+                onChangeText={setNewPasswordInput}
               ></TextInput>
             </View>
 
@@ -78,6 +98,8 @@ export default function EditProfile() {
                 style={styles.input}
                 placeholder="Confirm new password"
                 placeholderTextColor={"#aaa"}
+                value={confirmNewPassInput}
+                onChangeText={setConfirmNewPassInput}
               ></TextInput>
             </View>
           </View>
@@ -86,7 +108,7 @@ export default function EditProfile() {
         {/* buttons for saving */}
         <View style={styles.bottomButtonsWrapper}>
           {/* save changes */}
-          <TouchableOpacity style={styles.saveChangesButton} onPress={() => router.back()}>
+          <TouchableOpacity style={styles.saveChangesButton} onPress={pressedSaveChanges}>
             <Text style={styles.saveChangesLabel}>Save Changes</Text>
           </TouchableOpacity>
         </View>

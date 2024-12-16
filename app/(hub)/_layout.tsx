@@ -69,6 +69,7 @@ export default function HubLayout() {
         })}
       >
         <Tabs.Screen name="index" options={{ href: null }}></Tabs.Screen>
+        {/* files/[id] => [id] is the study hub id */}
         <Tabs.Screen name="files/[id]" options={{ tabBarLabel: "Files" }}></Tabs.Screen>
         <Tabs.Screen name="quizzes/[id]" options={{ tabBarLabel: "Quizzes" }}></Tabs.Screen>
       </Tabs>

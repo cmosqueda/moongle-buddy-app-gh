@@ -19,6 +19,10 @@ export default function RootLayout() {
             <Stack.Screen name="(search)"></Stack.Screen>
             <Stack.Screen name="(editProfile)"></Stack.Screen>
             <Stack.Screen name="(hub)"></Stack.Screen>
+<<<<<<< HEAD
+=======
+            <Stack.Screen name="(answerQuiz)"></Stack.Screen>
+>>>>>>> final
             <Stack.Screen name="(createQuiz)"></Stack.Screen>
             <Stack.Screen name="(editQuiz)"></Stack.Screen>
             <Stack.Screen name="app"></Stack.Screen>

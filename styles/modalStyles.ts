@@ -168,10 +168,25 @@ const modalStyles = StyleSheet.create({
     color: "#3d3d3d",
   },
 
+<<<<<<< HEAD
   // quiz id label:
   quizIdLabel: {
     fontFamily: "Poppins-Italic",
     color: "#3d3d3d",
+=======
+  // hub action modal
+  hubActionButtonsWrapper: {
+    flexDirection: "column",
+    marginVertical: 20,
+    justifyContent: "center",
+    width: "70%",
+  },
+
+  hubRenameWrapperView: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "center",
+>>>>>>> final
   },
 });
 
