@@ -101,7 +101,7 @@ export default function CreateQuiz() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>Quiz Title: {name}</Text>
+      <Text style={styles.header}>Create Quiz: {name}</Text>
       {questions.map((item, questionIndex) => (
         <View key={questionIndex} style={styles.questionContainer}>
           <Text style={styles.label}>Question {questionIndex + 1}:</Text>

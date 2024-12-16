@@ -167,6 +167,20 @@ const modalStyles = StyleSheet.create({
     fontFamily: "Poppins-Bold",
     color: "#3d3d3d",
   },
+
+  // hub action modal
+  hubActionButtonsWrapper: {
+    flexDirection: "column",
+    marginVertical: 20,
+    justifyContent: "center",
+    width: "70%",
+  },
+
+  hubRenameWrapperView: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "center",
+  },
 });
 
 export default modalStyles;

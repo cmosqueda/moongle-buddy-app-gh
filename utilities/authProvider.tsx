@@ -10,6 +10,7 @@ type User = {
   uid: string;
   email: string;
   username?: string;
+  password?: string;
 };
 
 interface AuthContextType {
@@ -18,6 +19,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<void>;
   signup: (userName: string, email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
+  reloadUser: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -34,32 +36,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
       const unsubscribe = onAuthStateChanged(FIREBASE_AUTH, async (firebaseUser) => {
         if (firebaseUser) {
-          try {
-            const userDoc = doc(FIREBASE_DB, "users", firebaseUser.uid);
-            const snapshot = await getDoc(userDoc);
-
-            if (snapshot.exists()) {
-              const userData = {
-                uid: firebaseUser.uid,
-                ...snapshot.data(),
-              } as User;
-
-              setUser(userData);
-              console.log("User data fetched:", userData);
-            } else {
-              console.error("User document does not exist in Firestore.");
-            }
-
-            await saveSession(await firebaseUser.getIdToken());
-            setIsAuthenticated(true);
-          } catch (error) {
-            console.error("Error fetching user data:", error);
-          }
+          await fetchUserData(firebaseUser.uid); // Fetch user data
+          await saveSession(await firebaseUser.getIdToken());
+          setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
           setUser(null);
           await clearSession();
-          console.log("No user is authenticated.");
         }
       });
 
@@ -68,6 +51,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     initializeAuth();
   }, []);
+
+  // Fetch user data from Firestore
+  const fetchUserData = async (uid: string) => {
+    try {
+      const userDoc = doc(FIREBASE_DB, "users", uid);
+      const snapshot = await getDoc(userDoc);
+      if (snapshot.exists()) {
+        const userData = { uid, ...snapshot.data() } as User;
+        setUser(userData);
+        console.log("User data reloaded:", userData);
+      } else {
+        console.error("User document does not exist in Firestore.");
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  // Function to manually reload the user data
+  const reloadUser = async () => {
+    if (user) {
+      console.log("Reloading user data...");
+      await fetchUserData(user.uid);
+    } else {
+      console.warn("No user is logged in to reload data.");
+    }
+  };
 
   const login = async (email: string, password: string) => {
     console.log("mounting overlay on login");
@@ -150,7 +160,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, signup, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, signup, logout, reloadUser }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

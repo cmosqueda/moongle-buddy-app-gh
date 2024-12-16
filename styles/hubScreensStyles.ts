@@ -25,6 +25,17 @@ const hubScreensStyles = StyleSheet.create({
     fontFamily: "Poppins-Regular",
     color: "#3d3d3d",
   },
+
+  errorText: {
+    fontFamily: "Poppins-Regular",
+    color: "#FF6B6B",
+  },
+
+  timestamp: {
+    fontFamily: "Poppins-Regular",
+    color: "#3d3d3d",
+    fontSize: 12,
+  },
 });
 
 export default hubScreensStyles;

@@ -8,6 +8,7 @@ import { fetchStudyHubsInRealTime } from "@/firebase-helpers/firestoreHelpers";
 import { useAuth } from "@/utilities/authProvider";
 import LoadingScreen from "@/transitional-screens/loadingScreen";
 import Files from "@/app/(hub)/files/[id]";
+import { HubActionModal } from "@/modal-components/hubActionModal";
 
 // define type for the data items
 type DataItem = {
@@ -17,6 +18,11 @@ type DataItem = {
 };
 
 export const HubList = () => {
+  // for hub modal
+  const [isHubModalVisible, setHubModalVisible] = useState(false);
+  const [selectedHubId, setSelectedHubId] = useState("");
+  const [selectHubTitle, setSelectedHubTitle] = useState("");
+
   const { user } = useAuth();
   const userId = user?.uid;
 
@@ -43,6 +49,17 @@ export const HubList = () => {
     };
   }, [userId]);
 
+  // handlers
+  const openHubModal = () => {
+    setHubModalVisible(true);
+  };
+
+  const closeHubModal = () => {
+    setSelectedHubId("");
+    setSelectedHubTitle("");
+    setHubModalVisible(false);
+  };
+
   // Handle item selection
   const handlePress = (item: DataItem) => {
     // router.push(`/(hub)?id=${item.id}&title=${item.title}&owner=${item.owner}`);
@@ -57,13 +74,20 @@ export const HubList = () => {
     // Files();
   };
 
-  const handleLongPress = () => {
-    Alert.alert("Long Press", "You long pressed on the list");
+  const handleLongPress = (item: DataItem) => {
+    setSelectedHubId(item.id);
+    setSelectedHubTitle(item.title);
+    openHubModal();
+    // Alert.alert("Long Press", `You long pressed ${item.id} title ${item.title} on the list`);
   };
 
   // Item renderer
   const renderItem = ({ item }: { item: DataItem }) => (
-    <TouchableOpacity onPress={() => handlePress(item)} style={hubListStyles.item} onLongPress={handleLongPress}>
+    <TouchableOpacity
+      onPress={() => handlePress(item)}
+      style={hubListStyles.item}
+      onLongPress={() => handleLongPress(item)}
+    >
       <Text style={hubListStyles.itemTitle}>{item.title || "Untitled Hub"}</Text>
       <Text style={hubListStyles.ownedByLabel}>Owned by {item.owner || "Unknown"}</Text>
     </TouchableOpacity>
@@ -86,8 +110,17 @@ export const HubList = () => {
   }
 
   return (
-    <View style={hubListStyles.container}>
-      <FlatList data={data} keyExtractor={(item) => item.id} renderItem={renderItem} scrollEnabled={true} />
-    </View>
+    <>
+      <View style={hubListStyles.container}>
+        <FlatList data={data} keyExtractor={(item) => item.id} renderItem={renderItem} scrollEnabled={true} />
+      </View>
+
+      <HubActionModal
+        visible={isHubModalVisible}
+        onClose={closeHubModal}
+        hubTitle={selectHubTitle}
+        hubId={selectedHubId}
+      ></HubActionModal>
+    </>
   );
 };

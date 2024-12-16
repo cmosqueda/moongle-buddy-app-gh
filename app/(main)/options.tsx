@@ -12,6 +12,7 @@ import { TriggerLoading } from "@/options-components/triggerLoadingButton";
 import { FirebaseTestRead, FirebaseTestWrite } from "@/options-components/triggerFirebaseTests";
 import { TriggerCreateQuizModal } from "@/options-components/triggerCreateQuizModal";
 import { TriggerQuizActionModal } from "@/options-components/triggerQuizActionModal";
+import { TriggerHubActionModal } from "@/options-components/triggerHubActionModal";
 
 export default function Options() {
   return (
@@ -37,6 +38,9 @@ export default function Options() {
 
           {/* dummy to trigger quiz action modal */}
           <TriggerQuizActionModal></TriggerQuizActionModal>
+
+          {/* dummy to trigger hub action modal */}
+          <TriggerHubActionModal></TriggerHubActionModal>
 
           {/* trigger firebase tests */}
           <FirebaseTestWrite></FirebaseTestWrite>
