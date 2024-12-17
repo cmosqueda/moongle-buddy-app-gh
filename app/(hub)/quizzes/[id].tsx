@@ -8,7 +8,7 @@ import { useAuth } from "@/utilities";
 import { QuizActionModal } from "@/modal-components/quizActionModal";
 
 // import { useLocalSearchParams, useRouter } from "expo-router";
-import { useLocalSearchParams } from "expo-router";
+// import { useLocalSearchParams } from "expo-router";
 
 export default function Quizzes() {
   // const { id } = useLocalSearchParams();
