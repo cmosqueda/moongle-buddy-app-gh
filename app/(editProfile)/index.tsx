@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useAuth } from "@/utilities/authProvider";
 import { FontAwesome } from "@expo/vector-icons";
 import { changeCredentials, reauthenticateUser } from "@/firebase-helpers";
+import { LogoutButton } from "@/options-components/logoutButton";
 
 // usernameFieldInput => for username text field
 // newPasswordInput => for new password text field
@@ -106,11 +107,15 @@ export default function EditProfile() {
         </View>
 
         {/* buttons for saving */}
-        <View style={styles.bottomButtonsWrapper}>
-          {/* save changes */}
+        {/* <View style={styles.bottomButtonsWrapper}>
           <TouchableOpacity style={styles.saveChangesButton} onPress={pressedSaveChanges}>
             <Text style={styles.saveChangesLabel}>Save Changes</Text>
           </TouchableOpacity>
+        </View> */}
+
+        {/* button for logout*/}
+        <View style={styles.bottomButtonsWrapper}>
+          <LogoutButton></LogoutButton>
         </View>
       </ScrollView>
     </>

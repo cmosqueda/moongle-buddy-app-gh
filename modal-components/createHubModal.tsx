@@ -39,6 +39,7 @@ export const CreateHubModal: React.FC<CreateHubModalProps> = ({ visible, onClose
 
       // Reset the input field
       setStudyHubName("");
+      onClose();
       Alert.alert("Success", "Your study hub has been created.");
     } catch (error) {
       console.error("Error:", error);

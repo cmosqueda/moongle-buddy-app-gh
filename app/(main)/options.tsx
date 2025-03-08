@@ -1,6 +1,6 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
-// import { UnderConstruction } from "@/allPurpose-components/underConstruction";
+import { UnderConstruction } from "@/allPurpose-components/underConstruction";
 import { LogoutButton } from "../../options-components/logoutButton";
 // import { TriggerSplash } from "@/options-components/triggerSplash";
 import { TriggerLoading } from "@/options-components/triggerLoadingButton";
@@ -22,10 +22,10 @@ export default function Options() {
         {/* parent view */}
         <View>
           {/* under construction lmao */}
-          {/* <UnderConstruction></UnderConstruction> */}
+          <UnderConstruction></UnderConstruction>
 
           {/* mga buttons */}
-          <LogoutButton></LogoutButton>
+          {/* <LogoutButton></LogoutButton> */}
 
           {/* dummy to trigger splash screen */}
           {/* <TriggerSplash></TriggerSplash> */}

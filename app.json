@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logotype.png",
         "backgroundColor": "#4ecdc4"
-      }
+      },
+      "package": "com.cmosqueda06.moonglebuddyapp"
     },
     "web": {
       "bundler": "metro",
@@ -36,6 +37,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "624daa91-578c-451f-a2fe-05f95a15b7d4"
+      }
     }
   }
 }

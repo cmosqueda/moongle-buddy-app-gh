@@ -38,4 +38,7 @@ yarn-error.*
 app-example
 
 # secret configs
-secret.ts
+# secret.ts
+
+# android/gradle.properties
+# android/app/my-upload-key.keystore

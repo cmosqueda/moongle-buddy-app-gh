@@ -91,6 +91,11 @@ const authStyles = StyleSheet.create({
     color: "#FF6B6B",
     fontFamily: "Poppins-Regular",
   },
+
+  blackText: {
+    color: "#3d3d3d",
+    fontFamily: "Poppins-Regular",
+  },
 });
 
 export default authStyles;

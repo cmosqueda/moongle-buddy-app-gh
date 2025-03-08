@@ -33,6 +33,7 @@ export const QuizActionModal: React.FC<QuizActionModalProps> = ({
     console.log("studyHub id:", id);
     console.log("quiz id:", quizId);
 
+    onClose();
     router.push(`/(editQuiz)/${id}/${quizId}/${quizTitle}`);
   };
 
@@ -57,6 +58,7 @@ export const QuizActionModal: React.FC<QuizActionModalProps> = ({
     console.log("Answer pressed");
     console.log("Quiz id:", quizId);
     console.log("Quiz title:", quizTitle);
+    onClose();
     router.push(`/(answerQuiz)/${id}/${quizId}/${quizTitle}`);
   };
 

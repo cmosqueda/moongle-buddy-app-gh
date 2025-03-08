@@ -12,8 +12,15 @@ export default function Signup() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [checkAccountExist, setCheckAccountExist] = useState<boolean>();
+  const [passwordReqsShown, setPasswordReqsShown] = useState(false);
 
   const { signup } = useAuth();
+
+  // // HANDLE FOCUS PASSWORD REQ SHOWN
+  // const handleShowPasswordReq = () => {
+  //   setPassword;
+  //   setPasswordReqsShown(false);
+  // };
 
   // HANDLE REGISTER
   const handleRegister = async () => {
@@ -28,6 +35,7 @@ export default function Signup() {
     }
 
     if (!validatePassword(password)) {
+      setPasswordReqsShown(false);
       tempErrors.password =
         "Password must be at least 8 characters, include one special character, and one uppercase letter";
     }
@@ -131,7 +139,14 @@ export default function Signup() {
               // onChangeText={(value) => {
               //   password.current = value;
               // }}
+              onFocus={() => setPasswordReqsShown(true)}
+              onKeyPress={() => setPasswordReqsShown(false)}
             ></TextInput>
+            {passwordReqsShown && (
+              <Text style={authStyles.blackText}>
+                Password must be at least 8 characters, include one special character, and one uppercase letter
+              </Text>
+            )}
             {errors.password && <Text style={authStyles.isFalseText}>{errors.password}</Text>}
 
             {/* confirm pass */}

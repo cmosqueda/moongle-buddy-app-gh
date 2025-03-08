@@ -3,8 +3,9 @@ import { View, Text, TouchableOpacity, ScrollView, Alert, ActivityIndicator } fr
 import { styles } from "@/styles/answerQuizStyles";
 import { router, useGlobalSearchParams, useLocalSearchParams } from "expo-router";
 // import { fetchQuizById } from "@/utils/firestoreHelpers"; // Ensure correct path to the helper
-import { fetchQuizById } from "@/firebase-helpers";
+// import { fetchQuizById } from "@/firebase-helpers";
 import { useAuth } from "@/utilities";
+import { fetchQuizById } from "@/firebase-helpers";
 
 // Define types for quiz data
 interface QuizItem {
